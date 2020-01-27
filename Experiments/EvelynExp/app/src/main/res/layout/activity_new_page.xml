@@ -4,13 +4,4 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".newPage">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="343dp"
-        android:layout_height="504dp"
-        app:srcCompat="@drawable/tim-foster-S0W9nvl3VBA-unsplash"
-        tools:layout_editor_absoluteX="34dp"
-        tools:layout_editor_absoluteY="113dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    tools:context=".newPage"/>
