@@ -7,6 +7,7 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/textSecondPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Second Page: test"
@@ -14,5 +15,13 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Link to main"
+        android:layout_below="@+id/textSecondPage"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
