@@ -48,10 +48,10 @@ public class settings extends AppCompatActivity {
 
     public void displayDialog(){
         builder = new AlertDialog.Builder(settings.this);
-        builder.setTitle("Are you sure you want to delete this account?\nYou will not be able to recover your account.");
+        builder.setTitle("Are you sure you want to delete this account?");
 
 
-        builder.setPositiveButton(temp.getUserInfo(), new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 deleteThisUser();
