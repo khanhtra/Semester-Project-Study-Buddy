@@ -61,7 +61,9 @@ public class settings extends AppCompatActivity {
 
     //TODO: Delete user from server
     public void deleteThisUser(){
-        String url = "http://coms-309-vb-5.cs.iastate.edu:8080/users/{id}";
+        LoginPage temp = new LoginPage();
+        String url = "http://coms-309-vb-5.cs.iastate.edu:8080/users/";
+        url = url.concat(temp.userInfo);
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         StringRequest strReq = new StringRequest(Request.Method.DELETE, url, new Response.Listener<String>() {

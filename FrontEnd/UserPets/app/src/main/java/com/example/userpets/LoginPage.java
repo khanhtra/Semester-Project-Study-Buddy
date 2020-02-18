@@ -26,7 +26,7 @@ public class LoginPage extends AppCompatActivity {
     private RequestQueue requestQueue;
     private EditText userName;
     private Button btnCreateUser;
-
+    protected String userInfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +38,7 @@ public class LoginPage extends AppCompatActivity {
         btnCreateUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String userInfo = userName.getText().toString();
+                userInfo = userName.getText().toString();
                 Submit(userInfo);
                 openMainPage();
             }
@@ -47,7 +47,8 @@ public class LoginPage extends AppCompatActivity {
 
     private void Submit(String info){
         final String userChosenName = info;
-        String url = "http://coms-309-vb-5.cs.iastate.edu:8080/users/{id}";
+        String url = "http://coms-309-vb-5.cs.iastate.edu:8080/users/";
+        url = url.concat(info);
         requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         StringRequest strReq = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
