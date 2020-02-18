@@ -76,7 +76,7 @@ public class settings extends AppCompatActivity {
             }
         }
         );
-
+        requestQueue.add(strReq);
     }
 
     public void openDeletePage(){
