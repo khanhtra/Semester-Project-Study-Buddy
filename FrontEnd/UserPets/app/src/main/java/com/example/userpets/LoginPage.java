@@ -26,7 +26,7 @@ public class LoginPage extends AppCompatActivity {
     private RequestQueue requestQueue;
     private EditText userName;
     private Button btnCreateUser;
-    protected String userInfo;
+    protected String userInfo = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

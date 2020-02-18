@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -17,10 +18,17 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class settings extends AppCompatActivity {
     private Button toDel;
     private AlertDialog confirmDeletion;
     private AlertDialog.Builder builder;
+    private RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,17 +67,16 @@ public class settings extends AppCompatActivity {
         confirmDeletion.show();
     }
 
-    //TODO: Delete user from server
     public void deleteThisUser(){
         LoginPage temp = new LoginPage();
         String url = "http://coms-309-vb-5.cs.iastate.edu:8080/users/";
         url = url.concat(temp.userInfo);
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         StringRequest strReq = new StringRequest(Request.Method.DELETE, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(getApplicationContext(), "", Toast.LENGTH_LONG).show();
+                Log.d("Account Deleted", response);
             }
         }, new Response.ErrorListener() {
             @Override
