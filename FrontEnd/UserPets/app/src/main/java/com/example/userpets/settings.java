@@ -30,6 +30,8 @@ public class settings extends AppCompatActivity {
     private AlertDialog.Builder builder;
     private RequestQueue requestQueue;
 
+    LoginPage temp = new LoginPage();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,11 +51,11 @@ public class settings extends AppCompatActivity {
         builder.setTitle("Are you sure you want to delete this account?\nYou will not be able to recover your account.");
 
 
-        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(temp.getUserInfo(), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 deleteThisUser();
-                openDeletePage();
+
             }
         });
 
@@ -68,15 +70,14 @@ public class settings extends AppCompatActivity {
     }
 
     public void deleteThisUser(){
-        LoginPage temp = new LoginPage();
         String url = "http://coms-309-vb-5.cs.iastate.edu:8080/users/";
-        url = url.concat(temp.userInfo);
+        url = url.concat(temp.getUserInfo());
         requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         StringRequest strReq = new StringRequest(Request.Method.DELETE, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d("Account Deleted", response);
+                openDeletePage();
             }
         }, new Response.ErrorListener() {
             @Override

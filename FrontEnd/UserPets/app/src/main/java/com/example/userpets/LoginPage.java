@@ -26,7 +26,7 @@ public class LoginPage extends AppCompatActivity {
     private RequestQueue requestQueue;
     private EditText userName;
     private Button btnCreateUser;
-    protected String userInfo = "";
+    private static String userInfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +38,8 @@ public class LoginPage extends AppCompatActivity {
         btnCreateUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userInfo = userName.getText().toString();
-                Submit(userInfo);
+                setUserInfo(userName.getText().toString());
+                Submit(getUserInfo());
                 openMainPage();
             }
         });
@@ -84,5 +84,13 @@ public class LoginPage extends AppCompatActivity {
     public void openMainPage(){
         Intent intent = new Intent(this, mainPage.class);
         startActivity(intent);
+    }
+
+    public void setUserInfo(String info){
+        userInfo = info;
+
+    }
+    public String getUserInfo(){
+        return userInfo;
     }
 }
