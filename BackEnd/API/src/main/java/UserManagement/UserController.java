@@ -3,6 +3,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,23 +22,23 @@ public class UserController
 	}
 	
 	//Gets a single user
-	@RequestMapping("/users/{id}")
-	public User getUser(@PathVariable String id)
+	@RequestMapping("/users/{username}")
+	public User getUser(@PathVariable String username)
 	{
-		return userService.getUser(id);
+		return userService.getUser(username);
 	}
 	
 	//Creates a new user
-	@RequestMapping(method=RequestMethod.POST, value = "/users/{id}")
-	public void addUser(@PathVariable String id)
+	@RequestMapping(method=RequestMethod.POST, value = "/users/{username}")
+	public void addUser(@PathVariable String username, @RequestBody String salt, @RequestBody int password)
 	{
-		userService.addUser(id);
+		userService.addUser(username, salt, password);
 	}
 	
 	//Deletes a user
-	@RequestMapping(method=RequestMethod.DELETE, value = "/users/{id}")
-	public void deleteUser(@PathVariable String id)
+	@RequestMapping(method=RequestMethod.DELETE, value = "/users/{username}")
+	public void deleteUser(@PathVariable String username)
 	{
-		userService.deleteUser(id);
+		userService.deleteUser(username);
 	}
 }

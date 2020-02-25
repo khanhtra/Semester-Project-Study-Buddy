@@ -23,18 +23,18 @@ public class UserService
 		return users; 
 	}
 	
-	public User getUser(String id)
+	public User getUser(String username)
 	{
-		return userRepository.findById(id).orElse(null);
+		return userRepository.findById(username).orElse(null);
 	}
 
-	public void addUser(String id) 
+	public void addUser(String username, String salt, int password) 
 	{
-		userRepository.save(new User(id));
+		userRepository.save(new User(username, salt, password));
 	}
 
-	public void deleteUser(String id) 
+	public void deleteUser(String username) 
 	{
-		userRepository.delete(new User(id));	
+		userRepository.delete(new User(username, "oooooo", 0));	
 	}
 }

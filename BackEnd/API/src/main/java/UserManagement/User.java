@@ -9,31 +9,45 @@ import javax.persistence.Table;
 public class User 
 {
 	@Id
-	private String id;
+	private String username;
+	private String salt;
+	private int password;
 	
 	public User() 
 	{
 		
 	}
 	
-	public User(String id) 
+	public User(String username, String salt, int password) 
 	{
-		this.id = id;
+		this.username = username;
+		this.salt = salt;
+		this.password = password;
 	}
 	
 	public String getId() 
 	{
-		return id;
+		return username;
 	}
 	
-	public void setId(String id)
+	public void setId(String username)
 	{
-		this.id = id;
-	}	
+		this.username = username;
+	}
+	
+	public String getSalt()
+	{
+		return salt;
+	}
+	
+	public int getPassword()
+	{
+		return password;
+	}
 	
 	@Override
 	public boolean equals (Object o)
 	{
-		return id.equals(((User)o).id);
+		return (username.equals(((User)o).username));
 	}
 }

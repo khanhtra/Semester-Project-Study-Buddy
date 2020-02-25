@@ -18,10 +18,10 @@ public class PetController
 	private PetService petService;
 	
 	//Gets all pets for a user
-	@RequestMapping("/users/{id}/pets")
-	public List<Pet> getPets(@PathVariable String id)
+	@RequestMapping("/users/{username}/pets")
+	public List<Pet> getPets(@PathVariable String username)
 	{
-		return petService.getPets(id);
+		return petService.getPets(username);
 	}
 	
 	//Creates a new pet for a user
@@ -42,6 +42,6 @@ public class PetController
 	@RequestMapping("/test")
 	public Pet test()
 	{
-		return new Pet("Kipper","Dog", new User("9000"));
+		return new Pet("Kipper","Dog", new User("9000", "ooooo", 1));
 	}
 }
