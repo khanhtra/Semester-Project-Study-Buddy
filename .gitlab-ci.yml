@@ -1,0 +1,27 @@
+stages:
+ - mavenbuild
+ - autodeploy
+
+maven-build:
+ stage: mavenbuild
+ tags:
+  - shell
+ script:
+  - cd BackEnd
+  - cd API
+  - mvn package -B
+
+auto-deploy:
+ stage: autodeploy
+ tags:
+  - shell
+ script:
+  - cd BackEnd
+  - cd API
+  - mvn package
+  - sudo mv target/*.jar /target/web-demo.jar
+  - sudo systemctl stop systemd-web-demo
+  - sudo systemctl start systemd-web-demo
+
+
+  
