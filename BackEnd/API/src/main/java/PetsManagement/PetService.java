@@ -12,10 +12,10 @@ public class PetService
 	@Autowired
 	PetRepository petRepository;
 	
-	public List<Pet> getPets(String id) 
+	public List<Pet> getPets(String username) 
 	{
 		List<Pet> pets = new ArrayList<>();
-		petRepository.findByOwnerId(id).forEach(pets::add);
+		petRepository.findByOwnerUsername(username).forEach(pets::add);
 		return pets;
 	}
 

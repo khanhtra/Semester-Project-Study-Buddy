@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "\"user\"")
+@Table(name = "users")
 public class User 
 {
 	@Id
@@ -40,9 +40,20 @@ public class User
 		return salt;
 	}
 	
+	public void setSalt(String salt)
+	{
+		this.salt = salt;
+		
+	}
+	
 	public int getPassword()
 	{
 		return password;
+	}
+	
+	public void setPassword(int password)
+	{
+		this.password = password;
 	}
 	
 	@Override

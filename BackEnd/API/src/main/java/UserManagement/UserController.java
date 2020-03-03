@@ -29,8 +29,8 @@ public class UserController
 	}
 	
 	//Creates a new user
-	@RequestMapping(method=RequestMethod.POST, value = "/users/{username}")
-	public void addUser(@PathVariable String username, @RequestBody String salt, @RequestBody int password)
+	@RequestMapping(method=RequestMethod.POST, value = "/users/{username}/{salt}")
+	public void addUser(@PathVariable String username, @PathVariable String salt, @RequestBody int password)
 	{
 		userService.addUser(username, salt, password);
 	}

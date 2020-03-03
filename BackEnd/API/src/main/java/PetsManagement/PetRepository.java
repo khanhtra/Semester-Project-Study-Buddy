@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface PetRepository extends CrudRepository<Pet, Integer>
 {
-	public List<Pet> findByOwnerId(String id);
+	public List<Pet> findByOwnerUsername(String username);
 }
