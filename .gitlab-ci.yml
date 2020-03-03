@@ -5,7 +5,7 @@ stages:
 maven-build:
  stage: mavenbuild
  tags:
-  - shell
+  - spring_tag
  script:
   - cd BackEnd
   - cd API
@@ -14,7 +14,7 @@ maven-build:
 auto-deploy:
  stage: autodeploy
  tags:
-  - shell
+  - spring_tag
  script:
   - cd BackEnd
   - cd API
