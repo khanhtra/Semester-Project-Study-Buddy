@@ -12,6 +12,7 @@ public class User
 	private String username;
 	private String salt;
 	private int password;
+	private int tickets;
 	
 	public User() 
 	{
@@ -43,7 +44,6 @@ public class User
 	public void setSalt(String salt)
 	{
 		this.salt = salt;
-		
 	}
 	
 	public int getPassword()
@@ -55,10 +55,14 @@ public class User
 	{
 		this.password = password;
 	}
-	
-	@Override
-	public boolean equals (Object o)
+
+	public int getTickets() 
 	{
-		return (username.equals(((User)o).username));
+		return tickets;
+	}
+
+	public void setTickets(int tickets) 
+	{
+		this.tickets = tickets;
 	}
 }

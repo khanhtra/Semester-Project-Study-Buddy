@@ -73,6 +73,6 @@ public class Pet
 	@Override
 	public boolean equals (Object o)
 	{
-		return (id == ((Pet)o).id);	
+		return ((name.equals(((Pet)o).name)) && (type.equals(((Pet)o).type)) && (owner.equals(((Pet)o).owner)));	
 	}
 }

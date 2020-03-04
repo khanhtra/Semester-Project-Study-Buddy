@@ -41,4 +41,18 @@ public class UserController
 	{
 		userService.deleteUser(username);
 	}
+	
+	//Adds the specified number of tickets to a users account
+	@RequestMapping(method=RequestMethod.POST, value = "/users/{username}/tickets")
+	public void addTickets(@PathVariable String username, @RequestBody int tickets)
+	{
+		;
+	}
+	
+	//Removes a ticket from a users account
+	@RequestMapping(method=RequestMethod.DELETE, value = "/users/{username}/tickets")
+	public void removeTicket(@PathVariable String username)
+	{
+		;
+	}
 }
