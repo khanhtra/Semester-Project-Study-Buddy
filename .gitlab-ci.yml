@@ -20,8 +20,8 @@ auto-deploy:
   - cd API
   - mvn package
   - sudo mv target/*.jar /target/web-demo.jar
-  - sudo systemctl stop system-web-demo
-  - sudo systemctl start system-web-demo
+  - sudo systemctl stop s-web-demo
+  - sudo systemctl start s-web-demo
 
 
   
