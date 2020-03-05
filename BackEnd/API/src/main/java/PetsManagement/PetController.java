@@ -17,6 +17,9 @@ public class PetController
 	@Autowired
 	private PetService petService;
 	
+	@Autowired
+	private PetTypeService petTypeService;
+	
 	//Gets all pets for a user
 	@RequestMapping("/users/{username}/pets")
 	public List<Pet> getPets(@PathVariable String username)
@@ -24,24 +27,45 @@ public class PetController
 		return petService.getPets(username);
 	}
 	
-	//Creates a new pet for a user
-	@RequestMapping(method=RequestMethod.POST, value = "/users/pets")
-	public void addPet(@RequestBody Pet pet)
+	//Renames a the pet that goes by the given id
+	@RequestMapping(method=RequestMethod.POST, value = "/users/pets/rename/{id}/{name}")
+	public void renamePet(@PathVariable int id, @PathVariable String name)
 	{
-		petService.addPet(pet);
+		petService.renamePet(id, name);
+	}
+	
+	//Creates a new pet for a user
+	@RequestMapping(method=RequestMethod.POST, value = "/users/pets/{rarity}")
+	public void addPet(@PathVariable String rarity, @RequestBody User user)
+	{
+		petService.addPet(rarity, user);
 	}
 	
 	//Deletes a pet from a user
-	@RequestMapping(method=RequestMethod.DELETE, value = "/users/pets")
-	public void deletePet( @RequestBody Pet pet)
+	@RequestMapping(method=RequestMethod.DELETE, value = "/users/pets/{id}")
+	public void deletePet(@PathVariable int id)
 	{
-		petService.deletePet(pet);
+		petService.deletePet(id);
+	}
+	
+	//Adds a new pet type to the DB
+	@RequestMapping(method=RequestMethod.POST, value = "/pettypes/{type}/{subType}/{rarity}")
+	public void addPetType(@PathVariable String type, @PathVariable String subType, @PathVariable String rarity)
+	{
+		petTypeService.addPetType(type, subType, rarity);
+	}
+	
+	//Displays all pet types in the DB
+	@RequestMapping("/pettypes")
+	public List<PetType> getPetTypes()
+	{
+		return petTypeService.getPetTypes();
 	}
 	
 	//Only for testing purposes
 	@RequestMapping("/test")
 	public Pet test()
 	{
-		return new Pet("Kipper","Dog", new User("9000", "ooooo", 1));
+		return new Pet(0, "Kipper",new PetType(0, "Dog", "Terrier", "Common"), new User("9000", "ooooo", 1));
 	}
 }
