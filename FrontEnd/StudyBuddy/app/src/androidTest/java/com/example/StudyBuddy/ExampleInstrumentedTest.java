@@ -1,4 +1,4 @@
-package com.example.userpets;
+package com.example.StudyBuddy;
 
 import android.content.Context;
 

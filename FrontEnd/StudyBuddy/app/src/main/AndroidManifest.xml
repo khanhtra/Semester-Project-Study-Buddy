@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.userpets">
+    package="com.example.StudyBuddy">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,10 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".deletedUser"></activity>
-        <activity android:name=".settings" />
-        <activity android:name=".mainPage" />
-        <activity android:name=".LoginPage">
+        <activity android:name="com.example.StudyBuddy.deletedUser"></activity>
+        <activity android:name="com.example.StudyBuddy.settings" />
+        <activity android:name="com.example.StudyBuddy.mainPage" />
+        <activity android:name="com.example.StudyBuddy.LoginPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
