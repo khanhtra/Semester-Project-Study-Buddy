@@ -63,17 +63,7 @@ public class LoginPage extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(),error.getMessage(), Toast.LENGTH_SHORT).show();
             }
-        }) {
-//            @Override
-//            public String getBodyContentType(){
-//                return"application/json; charset=utf-8";
-//            }
-//            @Override
-//            public byte[] getBody() throws AuthFailureError{
-//                try{ return userChosenName == null ? null : userChosenName.getBytes("utf-8");}
-//                catch (UnsupportedEncodingException uee){return null;}
-//            }
-        };
+        });
 
         requestQueue.add(strReq);
     }
