@@ -11,7 +11,9 @@ public class Pet
 	@Id
 	private Integer id;
 	private String name;
-	private String type;
+	
+	@ManyToOne
+	private PetType type;
 	
 	@ManyToOne//(cascade = {CascadeType.ALL})
 	private User owner;
@@ -21,10 +23,10 @@ public class Pet
 		
 	}
 	
-	public Pet(String name, String type, User owner)
+	public Pet(int id, String name, PetType type, User owner)
 	{
 		super();
-		id = (name + type + owner).hashCode();
+		this.id = id;
 		this.name = name;
 		this.type = type;
 		this.owner = owner;
@@ -40,7 +42,7 @@ public class Pet
 		return name;
 	}
 	
-	public String getType()
+	public PetType getType()
 	{
 		return type;
 	}
@@ -50,17 +52,12 @@ public class Pet
 		return owner;
 	}
 	
-	public void generateId()
-	{
-		id = (name + type + owner.getId()).hashCode();
-	}
-	
 	public void setName(String name)
 	{
 		this.name = name;
 	}
 	
-	public void setType(String type)
+	public void setType(PetType type)
 	{
 		this.type = type;
 	}
