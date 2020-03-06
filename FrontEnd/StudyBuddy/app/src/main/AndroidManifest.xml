@@ -7,14 +7,16 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Main Menu"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.StudyBuddy.deletedUser"></activity>
-        <activity android:name="com.example.StudyBuddy.settings" />
-        <activity android:name="com.example.StudyBuddy.mainPage" />
-        <activity android:name="com.example.StudyBuddy.LoginPage">
+        <activity android:name=".Timer"></activity>
+        <activity android:name=".LoginPage" />
+        <activity android:name=".deletedUser" />
+        <activity android:name=".settings" />
+        <activity android:name=".mainPage" />
+        <activity android:name=".MainMenu">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
