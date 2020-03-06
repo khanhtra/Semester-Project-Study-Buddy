@@ -11,12 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
         <activity android:name=".Timer"></activity>
         <activity android:name=".LoginPage" />
         <activity android:name=".deletedUser" />
         <activity android:name=".settings" />
         <activity android:name=".mainPage" />
         <activity android:name=".MainMenu">
+=======
+        <activity android:name="com.example.StudyBuddy.deletedUser"></activity>
+        <activity android:name="com.example.StudyBuddy.settings" />
+        <activity android:name="com.example.StudyBuddy.mainPage" />
+        <activity android:name="com.example.StudyBuddy.CreateUserPage">
+>>>>>>> 9-timer-and-tickets
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

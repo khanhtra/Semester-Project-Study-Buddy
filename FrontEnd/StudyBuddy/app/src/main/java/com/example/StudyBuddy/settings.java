@@ -23,7 +23,7 @@ public class settings extends AppCompatActivity {
     private AlertDialog.Builder builder;
     private RequestQueue requestQueue;
 
-    LoginPage temp = new LoginPage();
+    CreateUserPage temp = new CreateUserPage();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
