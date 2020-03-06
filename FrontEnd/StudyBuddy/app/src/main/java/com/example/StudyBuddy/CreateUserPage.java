@@ -19,15 +19,16 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class LoginPage extends AppCompatActivity {
+public class CreateUserPage extends AppCompatActivity {
     private RequestQueue requestQueue;
+    private RequestQueue reqGet;
     private EditText userName;
     private Button btnCreateUser;
     private static String userInfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_page);
+        setContentView(R.layout.activity_create_user_page);
 
         userName = (EditText)findViewById(R.id.userInput);
         btnCreateUser = (Button) findViewById(R.id.butUserCreation);
@@ -46,8 +47,10 @@ public class LoginPage extends AppCompatActivity {
         final String userChosenName = info;
         String url = "http://coms-309-vb-5.cs.iastate.edu:8080/users/";
         url = url.concat(info);
-        requestQueue = Volley.newRequestQueue(getApplicationContext());
 
+        reqGet = Volley.newRequestQueue(getApplicationContext());
+
+        requestQueue = Volley.newRequestQueue(getApplicationContext());
         StringRequest strReq = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

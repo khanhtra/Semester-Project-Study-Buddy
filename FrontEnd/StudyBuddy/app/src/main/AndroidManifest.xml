@@ -14,7 +14,7 @@
         <activity android:name="com.example.StudyBuddy.deletedUser"></activity>
         <activity android:name="com.example.StudyBuddy.settings" />
         <activity android:name="com.example.StudyBuddy.mainPage" />
-        <activity android:name="com.example.StudyBuddy.LoginPage">
+        <activity android:name="com.example.StudyBuddy.CreateUserPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
