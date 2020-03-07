@@ -1,10 +1,17 @@
 package timerManagement;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import UserManagement.User;
 
+@Entity 
+@Table(name = "timings")
 public class Timings //TODO Add a timings repository and service, make this class an entity
 {
+	@Id
 	private Date startTime;
 	private Date endTime;
 	private User owner;
