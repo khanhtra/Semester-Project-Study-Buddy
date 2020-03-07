@@ -13,6 +13,7 @@ public class User
 	private String salt;
 	private int password;
 	private int tickets;
+	private int usedTickets;
 	
 	public User() 
 	{
@@ -64,5 +65,26 @@ public class User
 	public void setTickets(int tickets) 
 	{
 		this.tickets = tickets;
+	}
+
+	public int getUsedTickets() 
+	{
+		return usedTickets;
+	}
+
+	public void setUsedtickets(int usedtickets) 
+	{
+		this.usedTickets = usedtickets;
+	}
+
+	public void addTickets(int tickets) 
+	{
+		this.tickets += tickets; 	
+	}
+
+	public void removeTicket() 
+	{
+		--tickets;
+		++usedTickets;
 	}
 }

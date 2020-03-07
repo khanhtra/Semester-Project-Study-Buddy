@@ -46,13 +46,27 @@ public class UserController
 	@RequestMapping(method=RequestMethod.POST, value = "/users/{username}/tickets")
 	public void addTickets(@PathVariable String username, @RequestBody int tickets)
 	{
-		;
+		userService.addTickets(username, tickets);
 	}
 	
 	//Removes a ticket from a users account
 	@RequestMapping(method=RequestMethod.DELETE, value = "/users/{username}/tickets")
 	public void removeTicket(@PathVariable String username)
 	{
-		;
+		userService.removeTicket(username);
+	}
+	
+	//Lists the number of tickets a user has
+	@RequestMapping("/users/{username}/tickets")
+	public int getNumberOfTickets(@PathVariable String username)
+	{
+		return userService.getNumberOfTickets(username);
+	}
+	
+	//Lists the number of used tickets a user has
+	@RequestMapping("/users/{username}/tickets/used")
+	public int getNumberOfUsedTickets(@PathVariable String username)
+	{
+		return userService.getNumberOfUsedTickets(username);
 	}
 }

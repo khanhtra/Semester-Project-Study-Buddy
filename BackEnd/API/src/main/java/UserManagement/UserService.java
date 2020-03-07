@@ -25,7 +25,7 @@ public class UserService
 	
 	public User getUser(String username)
 	{
-		return userRepository.findById(username).orElse(null);
+		return userRepository.findById(username).get();
 	}
 
 	public void addUser(String username, String salt, int password) 
@@ -36,5 +36,29 @@ public class UserService
 	public void deleteUser(String username) 
 	{
 		userRepository.delete(new User(username, "oooooo", 0));	
+	}
+
+	public int getNumberOfUsedTickets(String username) 
+	{
+		return userRepository.findById(username).get().getUsedTickets();
+	}
+
+	public int getNumberOfTickets(String username) 
+	{
+		return userRepository.findById(username).get().getTickets();
+	}
+
+	public void addTickets(String username, int tickets) 
+	{
+		User user = userRepository.findById(username).get();
+		user.addTickets(tickets);
+		userRepository.save(user);
+	}
+
+	public void removeTicket(String username) 
+	{
+		User user = userRepository.findById(username).get();
+		user.removeTicket();
+		userRepository.save(user);		
 	}
 }
