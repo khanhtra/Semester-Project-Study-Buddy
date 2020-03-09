@@ -23,7 +23,7 @@ public class TimingsController
 	}
 	
 	@RequestMapping("/timings/{username}")
-	public void getTimings(@RequestBody String username)
+	public void getTimings(@PathVariable String username)
 	{
 		timingsService.getTimings(username);
 	}
