@@ -38,4 +38,4 @@ android-build:
   - ./gradlew assemble
  artifacts:
   paths:
-   -FrontEnd/StudyBuddy/app/build/outputs/
+  -FrontEnd/StudyBuddy/app/build/outputs/
