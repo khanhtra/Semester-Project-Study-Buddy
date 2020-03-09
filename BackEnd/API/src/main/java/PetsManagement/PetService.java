@@ -6,18 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import UserManagement.User;
-
 @Service
 public class PetService 
 {
-	int id;
-	
 	@Autowired
 	PetRepository petRepository;
-	
-	@Autowired
-	PetTypeRepository petTypeRepository;
 	
 	public List<Pet> getPets(String username) 
 	{
@@ -26,31 +19,15 @@ public class PetService
 		return pets;
 	}
 
-	public void addPet(String rarity, User user) 
+	public void addPet(Pet pet) 
 	{
-		try 
-		{
-			id = petRepository.findFirstByOrderByIdDesc().getId() + 1;
-		}
-		
-		catch(NullPointerException e)
-		{
-			
-		}
-		
-		PetType petType = petTypeRepository.getRandomType();
-		petRepository.save(new Pet(id, "Leo", petType, user));
+		pet.generateId();
+		petRepository.save(pet);
 	}
 
-	public void deletePet(int id) 
+	public void deletePet(Pet pet) 
 	{
-		petRepository.deleteById(id);
-	}
-
-	public void renamePet(int id, String name) 
-	{
-		PetType type = petRepository.findById(id).get().getType();
-		User owner = petRepository.findById(id).get().getOwner();
-		petRepository.save(new Pet(id, name, type, owner));	
+		pet.generateId();
+		petRepository.delete(pet);
 	}
 }

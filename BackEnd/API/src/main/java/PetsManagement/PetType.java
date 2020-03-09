@@ -1,23 +1,18 @@
 package PetsManagement;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-@Entity
 public class PetType //TODO add a PetType repository and service, make this class an entity
 {
-	@Id
-	private int id;
+	private long id;
 	private String type;
 	private String subType;
-	private String rarity;
+	private short rarity;
 	
 	public PetType()
 	{
 		
 	}
 	
-	public PetType(int id, String type, String subType, String rarity)
+	public PetType(int id, String type, String subType, short rarity)
 	{
 		super();
 		this.id = id;
@@ -26,12 +21,12 @@ public class PetType //TODO add a PetType repository and service, make this clas
 		this.rarity = rarity;		
 	}
 	
-	public int getId() 
+	public long getId() 
 	{
 		return id;
 	}
 	
-	public void setId(int id) 
+	public void setId(long id) 
 	{
 		this.id = id;
 	}
@@ -56,12 +51,12 @@ public class PetType //TODO add a PetType repository and service, make this clas
 		this.subType = subType;
 	}
 	
-	public String getRarity() 
+	public short getRarity() 
 	{
 		return rarity;
 	}
 	
-	public void setRarity(String rarity) 
+	public void setRarity(short rarity) 
 	{
 		this.rarity = rarity;
 	}	

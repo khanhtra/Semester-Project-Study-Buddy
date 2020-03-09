@@ -33,6 +33,6 @@ android-build:
  tags:
   - android_tag
  script:
- - cd FrontEnd
- - cd StudyBuddy
- - ./gradlew assemble
+  - cd FrontEnd
+  - cd StudyBuddy
+  - ./gradlew assemble
