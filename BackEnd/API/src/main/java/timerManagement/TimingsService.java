@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import UserManagement.User;
 
 @Service
 public class TimingsService {
