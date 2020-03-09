@@ -12,7 +12,7 @@ import UserManagement.User;
 public class Timings //TODO Add a timings repository and service, make this class an entity
 {
 	@Id
-	private Integer timing_id;
+	private Integer id;
 	private Date startTime;
 	private Date endTime;
 	private User owner;
@@ -22,17 +22,17 @@ public class Timings //TODO Add a timings repository and service, make this clas
 		
 	}
 	
-	public Timings(int timing_id, Date startTime, Date endTime, User owner) 
+	public Timings(int id, Date startTime, Date endTime, User owner) 
 	{
 		super();
-		this.timing_id = timing_id; 
+		this.id = id; 
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.owner = owner;
 	}
 	
 	public Integer getId(){
-		return timing_id;
+		return id;
 	}
 
 	public Date getStartTime() 
