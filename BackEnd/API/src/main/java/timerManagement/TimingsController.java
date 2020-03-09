@@ -10,10 +10,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TimingsController 
 {
+	TimingsService timingsService = new TimingsService();
+	
 	//Adds a start and end time for a study session to the database
 	@RequestMapping(method=RequestMethod.POST, value = "/timings/{username}")
 	public void addTimings(@PathVariable String username, @RequestBody Date startTime, @RequestBody Date endTime)
 	{
-		;
+		timingsService.addTiming(username, startTime, endTime);;
+	}
+	
+	@RequestMapping("/timings/{username}")
+	public void getTimings(@RequestBody String username)
+	{
+		timingsService.getTimings(username);
 	}
 }

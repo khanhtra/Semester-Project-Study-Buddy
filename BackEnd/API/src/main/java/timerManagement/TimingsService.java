@@ -25,7 +25,7 @@ public class TimingsService {
 	}
 	
 	
-	public void addTiming(User username, Date startTime, Date endTime) {
+	public void addTiming(String username, Date startTime, Date endTime) {
 		try 
 		{
 			id = timingsRepository.findFirstByOrderByIdDesc().getId() + 1;
@@ -35,6 +35,8 @@ public class TimingsService {
 		{
 			
 		}
-		timingsRepository.save(new Timings(id, startTime, endTime, username));
+		
+		User user = timingsRepository.findById(id).get().getOwner();
+		timingsRepository.save(new Timings(id, startTime, endTime, user));
 	}
 }
