@@ -11,6 +11,8 @@ public class TimingsService {
 	@Autowired
 	TimingsRepository timingsRepository;
 
+	int id;
+
 	public TimingsService(){
 
 	}
