@@ -24,7 +24,7 @@ public class TimingsService {
 	}
 	
 	
-	public void addTiming(String username, Date startTime, Date endTime) {
+	public void addTiming(User username, Date startTime, Date endTime) {
 		try 
 		{
 			id = timingsRepository.findFirstByOrderByIdDesc().getId() + 1;
