@@ -29,7 +29,7 @@ android-build:
  stage: androidbuild
  before_script: 
   - export GRADLE_USER_HOME=`pwd`/.gradle
-  - chmod +x./FrontEnd/StudyBuddy/gradlew
+  - chmod +x ./FrontEnd/StudyBuddy/gradlew
  tags:
   - android_tag
  script:
