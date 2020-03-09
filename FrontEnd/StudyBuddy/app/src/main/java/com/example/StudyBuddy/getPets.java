@@ -1,7 +1,9 @@
 package com.example.StudyBuddy;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,9 +27,11 @@ public class getPets extends AppCompatActivity {
     private String rarity;
     private String URL;
 
-
     private LocalDataStorage data;
     private User user;
+
+    private AlertDialog notEnoughTickets;
+    private AlertDialog.Builder builder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,11 +55,7 @@ public class getPets extends AppCompatActivity {
                     deleteTicket();
                 }
 
-                else{
-                    finish();
-                    //popup saying not enough
-                }
-
+                else{displayTicketError();}
             }
         });
     }
@@ -119,5 +119,19 @@ public class getPets extends AppCompatActivity {
         });
 
         rq.add(request);
+    }
+
+    public void displayTicketError(){
+        builder = new AlertDialog.Builder(getPets.this);
+        builder.setTitle("Sorry, you don't have enough tickets.");
+
+
+        builder.setPositiveButton("OK, I UNDERSTAND", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) { }
+        });
+
+        notEnoughTickets = builder.create();
+        notEnoughTickets.show();
     }
 }
