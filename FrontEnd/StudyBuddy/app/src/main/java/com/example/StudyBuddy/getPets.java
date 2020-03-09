@@ -23,16 +23,20 @@ import java.util.Random;
 public class getPets extends AppCompatActivity {
     private Button getPet;
     private String rarity;
-    private String URL = "http://coms-309-vb-5.cs.iastate.edu:8080/users/pets/";
+    private String URL;
 
 
-    private LocalDataStorage data = new LocalDataStorage(this);
-    private User user = data.getUserData();
+    private LocalDataStorage data;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_pets);
+
+        data = new LocalDataStorage(getApplicationContext());
+        user = data.getUserData();
+        URL = "http://coms-309-vb-5.cs.iastate.edu:8080/users/pets/";
 
         getPet = findViewById(R.id.useTickGP);
         getPet.setOnClickListener(new View.OnClickListener() {

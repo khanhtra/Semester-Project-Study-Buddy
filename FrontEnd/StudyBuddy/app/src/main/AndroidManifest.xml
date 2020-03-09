@@ -23,7 +23,6 @@
         </activity>
         <activity android:name=".deletedUser" />
         <activity android:name=".settings" />
-        <activity android:name=".mainPage" />
         <activity android:name=".MainMenu" />
         <activity android:name=".CreateUserPage" />
     </application>

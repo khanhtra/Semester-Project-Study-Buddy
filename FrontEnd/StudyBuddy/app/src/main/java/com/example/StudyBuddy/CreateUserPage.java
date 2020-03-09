@@ -72,7 +72,7 @@ public class CreateUserPage extends AppCompatActivity {
     }
 
     public void openMainPage(){
-        Intent intent = new Intent(this, mainPage.class);
+        Intent intent = new Intent(this, MainMenu.class);
         startActivity(intent);
     }
 

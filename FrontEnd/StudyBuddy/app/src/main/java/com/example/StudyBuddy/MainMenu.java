@@ -23,6 +23,7 @@ import org.json.JSONObject;
 public class MainMenu extends AppCompatActivity implements View.OnClickListener {
 private Button getPet;
 private Button timer;
+private Button settings;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,9 +31,11 @@ private Button timer;
 
         getPet = findViewById(R.id.getPetMM);
         timer = findViewById(R.id.timerButtonMM);
+        settings = findViewById(R.id.settingsMM);
 
         getPet.setOnClickListener(this);
         timer.setOnClickListener(this);
+        settings.setOnClickListener(this);
     }
 
 
@@ -47,6 +50,11 @@ private Button timer;
             case R.id.timerButtonMM:
                 Intent intent2 = new Intent(this, Timer.class);
                 startActivity(intent2);
+                break;
+
+            case R.id.settingsMM:
+                Intent intent3 = new Intent(this, settings.class);
+                startActivity(intent3);
                 break;
         }
     }

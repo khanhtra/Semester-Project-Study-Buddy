@@ -16,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.StudyBuddy.LoginSystem.LoginPage;
 import com.example.StudyBuddy.LoginSystem.Logout;
 
 public class settings extends AppCompatActivity {
@@ -46,7 +47,7 @@ public class settings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 logoutUser();
-                finish();
+                backToLogin();
             }
         });
     }
@@ -101,4 +102,10 @@ public class settings extends AppCompatActivity {
     public void logoutUser(){
         Logout.out(this);
     }
+
+    public void backToLogin(){
+        Intent intent = new Intent(this, LoginPage.class);
+        startActivity(intent);
+    }
 }
+

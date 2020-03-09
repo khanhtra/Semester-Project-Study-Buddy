@@ -1,6 +1,7 @@
 package com.example.StudyBuddy.LoginSystem;
 
 import android.content.Context;
+import android.content.Intent;
 
 import com.example.StudyBuddy.LocalData.LocalDataStorage;
 
@@ -11,6 +12,5 @@ public class Logout
         LocalDataStorage data = new LocalDataStorage(context);
         data.setUserLoggedInStatus(false);
         data.clearUserData();
-        //startActivity(new Intent(this, RegisterPage.class));
     }
 }
