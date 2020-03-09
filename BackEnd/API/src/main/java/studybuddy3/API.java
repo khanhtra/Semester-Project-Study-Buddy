@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@ComponentScan(basePackages= {"PetsManagement","UserManagement"})
-@EntityScan(basePackages= {"PetsManagement","UserManagement"})
-@EnableJpaRepositories(basePackages= {"PetsManagement","UserManagement"})
+@ComponentScan(basePackages= {"PetsManagement","UserManagement","timerManagement"})
+@EntityScan(basePackages= {"PetsManagement","UserManagement","timerManagement"})
+@EnableJpaRepositories(basePackages= {"PetsManagement","UserManagement","timerManagement"})
 @SpringBootApplication
 public class API 
 {

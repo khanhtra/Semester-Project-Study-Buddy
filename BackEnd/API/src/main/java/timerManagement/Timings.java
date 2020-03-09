@@ -3,18 +3,19 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.ManyToOne;
 
 import UserManagement.User;
 
 @Entity 
-@Table(name = "timings")
-public class Timings //TODO Add a timings repository and service, make this class an entity
+public class Timings 
 {
 	@Id
 	private Integer id;
 	private Date startTime;
 	private Date endTime;
+	
+	@ManyToOne
 	private User owner;
 	
 	public Timings()

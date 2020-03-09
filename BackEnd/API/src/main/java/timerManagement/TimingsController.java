@@ -1,6 +1,7 @@
 package timerManagement;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,12 +20,13 @@ public class TimingsController
 	@RequestMapping(method=RequestMethod.POST, value = "/timings/{username}")
 	public void addTimings(@PathVariable String username, @RequestBody Date startTime, @RequestBody Date endTime)
 	{
-		timingsService.addTiming(username, startTime, endTime);;
+		timingsService.addTiming(username, startTime, endTime);
 	}
 	
+	//Gets a list of timings
 	@RequestMapping("/timings/{username}")
-	public void getTimings(@PathVariable String username)
+	public List<Timings> getTimings(@PathVariable String username)
 	{
-		timingsService.getTimings(username);
+		return timingsService.getTimings(username);
 	}
 }
