@@ -36,6 +36,3 @@ android-build:
   - cd FrontEnd
   - cd StudyBuddy
   - ./gradlew assemble
- artifacts:
-  paths:
-  -FrontEnd/StudyBuddy/app/build/outputs/
