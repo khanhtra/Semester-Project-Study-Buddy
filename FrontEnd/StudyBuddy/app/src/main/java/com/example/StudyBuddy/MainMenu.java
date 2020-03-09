@@ -21,17 +21,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MainMenu extends AppCompatActivity implements View.OnClickListener {
-private Button loginButton;
+private Button getPet;
 private Button timer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        loginButton = findViewById(R.id.loginButtonMM);
+        getPet = findViewById(R.id.getPetMM);
         timer = findViewById(R.id.timerButtonMM);
 
-        loginButton.setOnClickListener(this);
+        getPet.setOnClickListener(this);
         timer.setOnClickListener(this);
     }
 
@@ -39,9 +39,9 @@ private Button timer;
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.loginButtonMM:
-                Intent intent = new Intent(this, mainPage.class);
-                startActivity(intent);
+            case R.id.getPetMM:
+                Intent intent1 = new Intent(this, getPets.class);
+                startActivity(intent1);
                 break;
 
             case R.id.timerButtonMM:

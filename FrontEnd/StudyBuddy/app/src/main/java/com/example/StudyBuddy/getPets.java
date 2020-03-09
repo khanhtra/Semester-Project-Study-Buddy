@@ -1,0 +1,119 @@
+package com.example.StudyBuddy;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.StudyBuddy.LocalData.LocalDataStorage;
+import com.example.StudyBuddy.LocalData.User;
+
+import com.android.volley.RequestQueue;
+import com.google.gson.Gson;
+
+import java.io.UnsupportedEncodingException;
+import java.util.Random;
+
+public class getPets extends AppCompatActivity {
+    private Button getPet;
+    private String rarity;
+    private String URL = "http://coms-309-vb-5.cs.iastate.edu:8080/users/pets/";
+
+
+    private LocalDataStorage data = new LocalDataStorage(this);
+    private User user = data.getUserData();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_get_pets);
+
+        getPet = findViewById(R.id.useTickGP);
+        getPet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getRand();
+                URL = URL.concat(rarity);
+                if(user.getTickets() > 0){
+                    getPet();
+                    user.setTickets(user.getTickets() - 1);
+                    user.setUsedtickets(user.getUsedTickets() + 1);
+                    deleteTicket();
+                }
+
+                else{
+                    finish();
+                    //popup saying not enough
+                }
+
+            }
+        });
+    }
+
+    public void getRand(){
+        Random rand = new Random();
+        int percentage = rand.nextInt(100);
+
+        if(percentage < 80){rarity = "Common"; }
+        else if (percentage < 99){rarity = "Rare";}
+        else{rarity = "Ultra Rare"; }
+
+    }
+
+    public void getPet(){
+        RequestQueue rq = Volley.newRequestQueue(getApplicationContext());
+
+        StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                //display
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error)
+            {
+                error.printStackTrace();
+            }
+        }) {
+            @Override
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+
+            @Override
+            public byte[] getBody() {
+                Gson gson = new Gson();
+                String json = gson.toJson(user);
+
+                try{ return (json).getBytes("utf-8"); }
+                catch (UnsupportedEncodingException e) { return null; }
+            }
+        };
+
+        rq.add(request);
+    }
+
+    public void deleteTicket(){
+        String delURL = "http://coms-309-vb-5.cs.iastate.edu:8080/users/".concat(user.getId()).concat("/tickets");
+        RequestQueue rq = Volley.newRequestQueue(getApplicationContext());
+
+        StringRequest request = new StringRequest(Request.Method.DELETE, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {}
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error)
+            {
+                error.printStackTrace();
+            }
+        });
+
+        rq.add(request);
+    }
+}

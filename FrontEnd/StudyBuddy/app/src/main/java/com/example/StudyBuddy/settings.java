@@ -16,9 +16,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.StudyBuddy.LoginSystem.Logout;
 
 public class settings extends AppCompatActivity {
     private Button toDel;
+    private Button logout;
+
     private AlertDialog confirmDeletion;
     private AlertDialog.Builder builder;
     private RequestQueue requestQueue;
@@ -30,11 +33,20 @@ public class settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         toDel = (Button) findViewById(R.id.toDelete);
+        logout = findViewById(R.id.logoutSETTINGS);
+
 
         toDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 displayDialog();
+            }
+        });
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logoutUser();
+                finish();
             }
         });
     }
@@ -54,8 +66,7 @@ public class settings extends AppCompatActivity {
 
         builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-            }
+            public void onClick(DialogInterface dialog, int which) { }
         });
 
         confirmDeletion = builder.create();
@@ -85,5 +96,9 @@ public class settings extends AppCompatActivity {
     public void openDeletePage(){
         Intent toStart = new Intent(this, deletedUser.class);
         startActivity(toStart);
+    }
+
+    public void logoutUser(){
+        Logout.out(this);
     }
 }
