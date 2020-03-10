@@ -22,6 +22,7 @@ import com.example.StudyBuddy.LoginSystem.Logout;
 public class settings extends AppCompatActivity {
     private Button toDel;
     private Button logout;
+    //PUSH TO SAVE KHANH'S BUTT
 
     private AlertDialog confirmDeletion;
     private AlertDialog.Builder builder;
