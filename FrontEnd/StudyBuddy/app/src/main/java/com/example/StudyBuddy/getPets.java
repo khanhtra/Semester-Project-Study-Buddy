@@ -50,8 +50,7 @@ public class getPets extends AppCompatActivity {
                 URL = URL.concat(rarity);
                 if(user.getTickets() > 0){
                     getPet();
-                    user.setTickets(user.getTickets() - 1);
-                    user.setUsedtickets(user.getUsedTickets() + 1);
+                    user.removeTicket();
                     deleteTicket();
                 }
 
@@ -76,7 +75,7 @@ public class getPets extends AppCompatActivity {
         StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                //display
+                //display pets somehow
             }
         }, new Response.ErrorListener() {
             @Override
