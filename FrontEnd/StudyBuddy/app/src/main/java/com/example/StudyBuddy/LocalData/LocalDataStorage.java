@@ -28,7 +28,7 @@ public class LocalDataStorage
 
     public User getUserData()
     {
-        String username = userData.getString("name","");
+        String username = userData.getString("username","");
         String salt = userData.getString("salt","");
         int password = userData.getInt("password",0);
         int tickets = userData.getInt("tickets", 0);
