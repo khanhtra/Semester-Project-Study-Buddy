@@ -70,7 +70,7 @@ public class Timer extends AppCompatActivity {
         chronometer = findViewById(R.id.chronometer);
         data = new LocalDataStorage(getApplicationContext());
         user = data.getUserData();
-        
+
         URL = "http://coms-309-vb-5.cs.iastate.edu:8080/timings/";
         URL = URL.concat(user.getId());
 
