@@ -27,6 +27,15 @@ public class User
 		this.password = password;
 	}
 	
+	public User(String username, String salt, int password, int tickets, int usedTickets)
+	{
+		this.username = username;
+		this.salt = salt;
+		this.password = password;
+		this.tickets = tickets;
+		this.usedTickets = usedTickets;
+	}
+	
 	public String getId() 
 	{
 		return username;

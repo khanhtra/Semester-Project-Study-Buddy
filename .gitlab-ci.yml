@@ -1,5 +1,6 @@
 stages:
  - mavenbuild
+ - maventest
  - autodeploy
  - androidbuild
 
@@ -11,6 +12,15 @@ maven-build:
   - cd BackEnd
   - cd API
   - mvn package -B
+
+maven-test:
+ stage: maventest
+ tags:
+  -spring_tag
+ script:
+  - cd BackEnd
+  - cd API
+  - mvn test
 
 auto-deploy:
  stage: autodeploy
