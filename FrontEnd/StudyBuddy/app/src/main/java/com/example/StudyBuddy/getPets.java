@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -74,21 +75,15 @@ public class getPets extends AppCompatActivity {
 
         StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
-            public void onResponse(String response) {
-                //display pets somehow
-            }
+            public void onResponse(String response) { Toast.makeText(getPets.this, "Got a pet!", Toast.LENGTH_SHORT).show(); }
         }, new Response.ErrorListener() {
             @Override
-            public void onErrorResponse(VolleyError error)
-            {
-                error.printStackTrace();
-            }
+            public void onErrorResponse(VolleyError error) { error.printStackTrace(); }
         }) {
             @Override
             public String getBodyContentType() {
                 return "application/json; charset=utf-8";
             }
-
             @Override
             public byte[] getBody() {
                 Gson gson = new Gson();
