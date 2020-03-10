@@ -101,7 +101,7 @@ public class getPets extends AppCompatActivity {
         String delURL = "http://coms-309-vb-5.cs.iastate.edu:8080/users/".concat(user.getId()).concat("/tickets");
         RequestQueue rq = Volley.newRequestQueue(getApplicationContext());
 
-        StringRequest request = new StringRequest(Request.Method.DELETE, URL, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.DELETE, delURL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {}
         }, new Response.ErrorListener() {
