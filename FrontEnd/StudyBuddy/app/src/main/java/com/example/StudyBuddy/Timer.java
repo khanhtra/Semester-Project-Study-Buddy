@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -35,6 +36,8 @@ import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
 
 public class Timer extends AppCompatActivity {
 
+    private TextView toMain;
+
     private long totalTime;
     private Chronometer chronometer;
     private boolean running;
@@ -44,21 +47,32 @@ public class Timer extends AppCompatActivity {
     private String URL;
     private LocalDataStorage data;
     private User user;
-    private String finalURL;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer);
+        toMain = findViewById(R.id.toMenuTimer);
+
+        toMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goBack();
+            }
+        });
 
         chronometer = findViewById(R.id.chronometer);
         data = new LocalDataStorage(getApplicationContext());
         user = data.getUserData();
         URL = "http://coms-309-vb-5.cs.iastate.edu/timings/";
 
-
     }
+
+    public void goBack(){
+        startActivity(new Intent(this, MainMenu.class));
+    }
+
     public void startChronometer(View v){
         if (!running) {
             chronometer.setBase(SystemClock.elapsedRealtime() - totalTime);
