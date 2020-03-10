@@ -36,6 +36,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+<<<<<<< HEAD
 
     testImplementation 'org.mockito:mockito-core:2.6.3'
 
@@ -45,5 +46,14 @@ dependencies {
     androidTestImplementation 'com.crittercism.dexmaker:dexmaker:1.4'
     androidTestImplementation 'com.crittercism.dexmaker:dexmaker-dx:1.4'
     androidTestImplementation 'com.crittercism.dexmaker:dexmaker-mockito:1.4'
+=======
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    testImplementation'junit:junit:4.12'
+    testImplementation'org.mockito:mockito-core:2.6.3'
+
+
+>>>>>>> bc55417b1923de38916f1174f44627c537b0693f
 
 }
