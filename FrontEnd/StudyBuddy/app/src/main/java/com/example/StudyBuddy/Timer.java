@@ -48,6 +48,7 @@ public class Timer extends AppCompatActivity {
 
     private String URL;
     private String ticketURL;
+
     private LocalDataStorage data;
     private User user;
 
@@ -74,7 +75,9 @@ public class Timer extends AppCompatActivity {
         URL = "http://coms-309-vb-5.cs.iastate.edu:8080/timings/";
         URL = URL.concat(user.getId());
 
-        ticketURL = "http://coms-309-vb-5.cs.iastate.edu:8080/users/varun/tickets";
+        ticketURL = "http://coms-309-vb-5.cs.iastate.edu:8080/users/";
+        ticketURL = ticketURL.concat("varun").concat("/tickets");
+
 //        addT = findViewById(R.id.buttonReset);
 //        addT.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -190,4 +193,33 @@ public class Timer extends AppCompatActivity {
         };
         rq.add(request);
     }
+//    public void details (){
+//        StringRequest request = new StringRequest(Request.Method.GET, ticketURL, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                //display
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error)
+//            {
+//                error.printStackTrace();
+//            }
+//        }) {
+//            @Override
+//            public String getBodyContentType() {
+//                return "application/json; charset=utf-8";
+//            }
+//
+//            @Override
+//            public byte[] getBody() {
+//                Gson gson = new Gson();
+//                String json = gson.toJson(1);
+//
+//                try{ return (json).getBytes("utf-8"); }
+//                catch (UnsupportedEncodingException e) { return null; }
+//            }
+//        };
+//        rq.add(request);
+//    }
 }
