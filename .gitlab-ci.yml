@@ -16,7 +16,7 @@ maven-build:
 maven-test:
  stage: maventest
  tags:
-  -spring_tag
+  - spring_tag
  script:
   - cd BackEnd
   - cd API
