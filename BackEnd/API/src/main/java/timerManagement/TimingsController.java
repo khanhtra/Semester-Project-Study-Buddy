@@ -17,7 +17,7 @@ public class TimingsController
 	TimingsService timingsService = new TimingsService();
 	
 	//Adds a start and end time for a study session to the database
-	@RequestMapping(method=RequestMethod.POST, value = "/timings/{username}")
+	@RequestMapping(method=RequestMethod.POST, value = "/timings/{username}/add")
 	public void addTimings(@PathVariable String username, @RequestBody Date startTime, @RequestBody Date endTime)
 	{
 		timingsService.addTiming(username, startTime, endTime);
