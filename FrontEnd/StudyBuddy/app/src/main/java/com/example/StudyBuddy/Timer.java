@@ -36,6 +36,7 @@ import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
 
 public class Timer extends AppCompatActivity {
 
+    //first push didnt work
     private TextView toMain;
 
     private long totalTime;
