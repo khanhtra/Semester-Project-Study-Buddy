@@ -36,7 +36,6 @@ import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
 
 public class Timer extends AppCompatActivity {
 
-    //first push didnt work
     private TextView toMain;
 
     private long totalTime;
@@ -44,8 +43,11 @@ public class Timer extends AppCompatActivity {
     private boolean running;
     private Date dateStart;
     private Date dateEnd;
+    private Button addT;
+    private long tempTime;
 
     private String URL;
+    private String ticketURL;
     private LocalDataStorage data;
     private User user;
 
@@ -63,10 +65,23 @@ public class Timer extends AppCompatActivity {
             }
         });
 
+
+
         chronometer = findViewById(R.id.chronometer);
         data = new LocalDataStorage(getApplicationContext());
         user = data.getUserData();
-        URL = "http://coms-309-vb-5.cs.iastate.edu/timings/";
+        
+        URL = "http://coms-309-vb-5.cs.iastate.edu:8080/timings/";
+        URL = URL.concat(user.getId());
+
+        ticketURL = "http://coms-309-vb-5.cs.iastate.edu:8080/users/varun/tickets";
+//        addT = findViewById(R.id.buttonReset);
+//        addT.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                addTimer();
+//            }
+//        });
 
     }
 
@@ -79,7 +94,7 @@ public class Timer extends AppCompatActivity {
             chronometer.setBase(SystemClock.elapsedRealtime() - totalTime);
             chronometer.start();
             running = true;
-            dateStart = new java.util.Date();
+            dateStart = new Date();
 
         }
     }
@@ -92,10 +107,14 @@ public class Timer extends AppCompatActivity {
     }
     public void resetChronometer (View v){
 
+
         chronometer.setBase(SystemClock.elapsedRealtime());
+        tempTime = totalTime;
         totalTime = 0;
-        dateEnd = new java.util.Date();
-        URL = URL.concat(user.getId());
+        dateEnd = new Date();
+        addTimer();
+        grantTickets();
+
 
 
     }
@@ -129,15 +148,46 @@ public class Timer extends AppCompatActivity {
                 catch (UnsupportedEncodingException e) { return null; }
             }
         };
-
         rq.add(request);
-
     }
+
     //Set ticket conditions
     public void grantTickets(){
         //45mins
-        if (totalTime == 2700){
-
+        if (tempTime >= 10){
+            addTicket();
         }
+        tempTime = 0;
+    }
+    public void addTicket(){
+        RequestQueue rq = Volley.newRequestQueue(getApplicationContext());
+
+        StringRequest request = new StringRequest(Request.Method.POST, ticketURL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                //display
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error)
+            {
+                error.printStackTrace();
+            }
+        }) {
+            @Override
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+
+            @Override
+            public byte[] getBody() {
+                Gson gson = new Gson();
+                String json = gson.toJson(1);
+
+                try{ return (json).getBytes("utf-8"); }
+                catch (UnsupportedEncodingException e) { return null; }
+            }
+        };
+        rq.add(request);
     }
 }
