@@ -3,6 +3,12 @@ package PetsManagement;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+/**
+ * The PetType repository contains inherited methods from the CrudRepsoitory for database access
+ * It also contains methods implemented through SQL Queries
+ * 
+ * @author Varun
+ */
 public interface PetTypeRepository extends CrudRepository<PetType, Integer>
 {
 	public PetType findFirstByOrderByIdDesc();

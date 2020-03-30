@@ -6,6 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * The PetType service accesses and modifies the database using the repository
+ * 
+ * @author Varun
+ */
 @Service
 public class PetTypeService 
 {
@@ -14,6 +19,11 @@ public class PetTypeService
 	@Autowired
 	PetTypeRepository petTypeRepository;
 	
+	/**
+	 * Displays all pet types in the DB
+	 * 
+	 * @return A List of all Pet Types
+	 */
 	public List<PetType> getPetTypes() 
 	{
 		List<PetType> petTypes = new ArrayList<>();
@@ -21,7 +31,13 @@ public class PetTypeService
 		return petTypes;
 	}
 
-	
+	/**
+	 * Adds a new PetType to the DB
+	 * 
+	 * @param type    A type String
+	 * @param subType A subType String
+	 * @param rarity  The PetType rarity 
+	 */
 	public void addPetType(String type, String subType, String rarity)
 	{
 		try 

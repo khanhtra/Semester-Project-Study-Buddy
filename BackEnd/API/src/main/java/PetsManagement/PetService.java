@@ -8,6 +8,11 @@ import org.springframework.stereotype.Service;
 
 import UserManagement.User;
 
+/**
+ * The Pet service accesses and modifies the database using the repository
+ * 
+ * @author Varun
+ */
 @Service
 public class PetService 
 {
@@ -19,6 +24,12 @@ public class PetService
 	@Autowired
 	PetTypeRepository petTypeRepository;
 	
+	/**
+	 * Gets all Pets for a User
+	 * 
+	 * @param username The User's username
+	 * @return A List of all the User's Pets
+	 */
 	public List<Pet> getPets(String username) 
 	{
 		List<Pet> pets = new ArrayList<>();
@@ -26,6 +37,12 @@ public class PetService
 		return pets;
 	}
 
+	/**
+	 * Creates a new Pet for a User
+	 * 
+	 * @param rarity The pet rarity
+	 * @param user   The user to whom the pet is to be added
+	 */
 	public void addPet(String rarity, User user) 
 	{
 		try 
@@ -41,12 +58,23 @@ public class PetService
 		PetType petType = petTypeRepository.getRandomType();
 		petRepository.save(new Pet(id, "Leo", petType, user));
 	}
-
+	
+	/**
+	 * Deletes a Pet from a User
+	 * 
+	 * @param id The id of the Pet to be deleted
+	 */
 	public void deletePet(int id) 
 	{
 		petRepository.deleteById(id);
 	}
 
+	/**
+	 * Renames a the Pet that goes by the given id
+	 * 
+	 * @param id   The Pet id
+	 * @param name The new name for the Pet
+	 */
 	public void renamePet(int id, String name) 
 	{
 		PetType type = petRepository.findById(id).get().getType();
