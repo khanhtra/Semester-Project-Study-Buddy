@@ -15,7 +15,7 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@ComponentScan(basePackages= {"PetsManagement","UserManagement","timerManagement"})
+@ComponentScan(basePackages= {"PetsManagement","UserManagement","timerManagement","websocket"})
 @EntityScan(basePackages= {"PetsManagement","UserManagement","timerManagement"})
 @EnableJpaRepositories(basePackages= {"PetsManagement","UserManagement","timerManagement"})
 @SpringBootApplication
