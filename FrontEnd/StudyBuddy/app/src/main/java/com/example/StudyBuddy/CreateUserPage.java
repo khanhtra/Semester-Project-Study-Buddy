@@ -19,6 +19,9 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * Is the first page a new user will see in this app.
+ */
 public class CreateUserPage extends AppCompatActivity {
     private RequestQueue requestQueue;
     private RequestQueue reqGet;
@@ -43,6 +46,10 @@ public class CreateUserPage extends AppCompatActivity {
         });
     }
 
+    /**
+     * Sends a POST request to the server in order to submit the new user information.
+     * @param info User chosen string to be the username of this account.
+     */
     private void Submit(String info){
         final String userChosenName = info;
         String url = "http://coms-309-vb-5.cs.iastate.edu:8080/users/";
@@ -71,15 +78,27 @@ public class CreateUserPage extends AppCompatActivity {
         requestQueue.add(strReq);
     }
 
+    /**
+     * Sends user to mainPage.
+     */
     public void openMainPage(){
         Intent intent = new Intent(this, MainMenu.class);
         startActivity(intent);
     }
 
+    /**
+     * Sets userInfo
+     * @param info Input string to set userInfo
+     */
     public void setUserInfo(String info){
         userInfo = info;
 
     }
+
+    /**
+     * Shows userInfo
+     * @return userInfo
+     */
     public String getUserInfo(){
         return userInfo;
     }

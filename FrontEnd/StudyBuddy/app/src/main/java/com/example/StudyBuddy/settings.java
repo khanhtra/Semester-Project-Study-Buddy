@@ -19,6 +19,10 @@ import com.android.volley.toolbox.Volley;
 import com.example.StudyBuddy.LoginSystem.LoginPage;
 import com.example.StudyBuddy.LoginSystem.Logout;
 
+/**
+ * Implements the Settings page of the app.
+ * Currently has options to delete a user or to log a user out.
+ */
 public class settings extends AppCompatActivity {
     private Button toDel;
     private Button logout;
@@ -52,6 +56,10 @@ public class settings extends AppCompatActivity {
         });
     }
 
+    /**
+     * Displays a pop-up dialog box to confirm with the user if they truly want to delete the account.
+     * Has options YES or CANCEL.
+     */
     public void displayDialog(){
         builder = new AlertDialog.Builder(settings.this);
         builder.setTitle("Are you sure you want to delete this account?");
@@ -74,6 +82,10 @@ public class settings extends AppCompatActivity {
         confirmDeletion.show();
     }
 
+    /**
+     * Uses a DELETE request to delete the current user from the database.
+     * Is called by displayDialog upon the selection of YES.
+     */
     public void deleteThisUser(){
         String url = "http://coms-309-vb-5.cs.iastate.edu:8080/users/";
         url = url.concat(temp.getUserInfo());
@@ -94,15 +106,24 @@ public class settings extends AppCompatActivity {
         requestQueue.add(strReq);
     }
 
+    /**
+     * Sends user to the deletedUser page.
+     */
     public void openDeletePage(){
         Intent toStart = new Intent(this, deletedUser.class);
         startActivity(toStart);
     }
 
+    /**
+     * Logs user out. User will have to re-login the next time they open the app.
+     */
     public void logoutUser(){
         Logout.out(this);
     }
 
+    /**
+     * Sends user back to login page.
+     */
     public void backToLogin(){
         Intent intent = new Intent(this, LoginPage.class);
         startActivity(intent);

@@ -23,6 +23,10 @@ import com.google.gson.Gson;
 import java.io.UnsupportedEncodingException;
 import java.util.Random;
 
+/**
+ * Implements the core feature of exchanging tickets for pets.
+ * Also handles the rarity of the pets.
+ */
 public class getPets extends AppCompatActivity {
     private Button getPet;
     private String rarity;
@@ -60,6 +64,9 @@ public class getPets extends AppCompatActivity {
         });
     }
 
+    /**
+     * provides a randomised string for use in POST request in getPet.
+     */
     public void getRand(){
         Random rand = new Random();
         int percentage = rand.nextInt(100);
@@ -70,6 +77,9 @@ public class getPets extends AppCompatActivity {
 
     }
 
+    /**
+     * Makes a POST request to assign a new pet to the User's list of available pets.
+     */
     public void getPet(){
         RequestQueue rq = Volley.newRequestQueue(getApplicationContext());
 
@@ -97,6 +107,9 @@ public class getPets extends AppCompatActivity {
         rq.add(request);
     }
 
+    /**
+     * Makes a DELETE request to remove one ticket from the user's available tickets.
+     */
     public void deleteTicket(){
         String delURL = "http://coms-309-vb-5.cs.iastate.edu:8080/users/".concat(user.getId()).concat("/tickets");
         RequestQueue rq = Volley.newRequestQueue(getApplicationContext());
@@ -115,10 +128,14 @@ public class getPets extends AppCompatActivity {
         rq.add(request);
     }
 
+    /**
+     * Tells the user that they do not have enough tickets to obtain a pet through a pop-up dialog
+     * box.
+     * Available options are "Sorry, you don't have enough tickets." and "OK, I UNDERSTAND"
+     */
     public void displayTicketError(){
         builder = new AlertDialog.Builder(getPets.this);
         builder.setTitle("Sorry, you don't have enough tickets.");
-
 
         builder.setPositiveButton("OK, I UNDERSTAND", new DialogInterface.OnClickListener() {
             @Override

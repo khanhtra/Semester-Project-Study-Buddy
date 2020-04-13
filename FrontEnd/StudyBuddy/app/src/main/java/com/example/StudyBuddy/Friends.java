@@ -4,14 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-/**
- * Shows the deletedUser page.
- */
-public class deletedUser extends AppCompatActivity {
+public class Friends extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_deleted_user);
+        setContentView(R.layout.activity_friends);
     }
 }

@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".getPets"></activity>
+        <activity android:name=".Friends"></activity>
+        <activity android:name=".getPets" />
         <activity android:name=".LoginSystem.RegisterPage" />
         <activity android:name=".Timer" />
         <activity android:name=".LoginSystem.LoginPage">

@@ -20,6 +20,10 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * Implements the main page of the app.
+ * Has the buttons getPet, timer and settings.
+ */
 public class MainMenu extends AppCompatActivity implements View.OnClickListener {
 private Button getPet;
 private Button timer;

@@ -34,6 +34,11 @@ import java.util.Date;
 
 import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
 
+/**
+ * Implements the core feature of having a timer.
+ * This class handles the recording of total time spent studying as well as awarding the user with
+ * the corresponding tickets that they've earned.
+ */
 public class Timer extends AppCompatActivity {
 
     private TextView toMain;
@@ -88,10 +93,18 @@ public class Timer extends AppCompatActivity {
 
     }
 
+    /**
+     * Opens up Main Menu activity from Timer class
+     */
     public void goBack(){
         startActivity(new Intent(this, MainMenu.class));
     }
 
+    /**
+     * Starts a stopwatch-like app on the activity screen starting from 00:00
+     * @param v
+     * responsible for the window that displays the time the stopwatch is currently at
+     */
     public void startChronometer(View v){
         if (!running) {
             chronometer.setBase(SystemClock.elapsedRealtime() - totalTime);
@@ -101,6 +114,12 @@ public class Timer extends AppCompatActivity {
 
         }
     }
+
+    /**
+     * Pauses the stopwatch app, time will be calculated when paused
+     * @param v
+     * responsible for the window that displays the time the stopwatch is paused at
+     */
     public void stopChronometer(View v) {
         if (running == true) {
             chronometer.stop();
@@ -108,6 +127,12 @@ public class Timer extends AppCompatActivity {
             running = false;
         }
     }
+
+    /**
+     * Reset the stopwatch to 00:00, will give tickets to the client based on specific criteria
+     * @param v
+     * responsible for the window that displays the reset time
+     */
     public void resetChronometer (View v){
 
 
@@ -121,6 +146,10 @@ public class Timer extends AppCompatActivity {
 
 
     }
+
+    /**
+     * Uses post requests to add the stopwatch total time of the current user to a database to be stored
+     */
     public void addTimer(){
         RequestQueue rq = Volley.newRequestQueue(getApplicationContext());
 
@@ -154,7 +183,17 @@ public class Timer extends AppCompatActivity {
         rq.add(request);
     }
 
-    //Set ticket conditions
+    /**
+     * Method to calculate if the current user will obtain a ticket based on stopwatch time
+     * @param time
+     */
+    public void timeLogic(int time){
+        //Add logic to decide time increments at which tickets will be granted
+    }
+
+    /**
+     * Method to add a ticket to the current user
+     */
     public void grantTickets(){
         //45mins
         if (tempTime >= 10){
@@ -162,6 +201,10 @@ public class Timer extends AppCompatActivity {
         }
         tempTime = 0;
     }
+
+    /**
+     * Uses post requests to add a ticket object to the database for storage for the current user
+     */
     public void addTicket(){
         RequestQueue rq = Volley.newRequestQueue(getApplicationContext());
 
