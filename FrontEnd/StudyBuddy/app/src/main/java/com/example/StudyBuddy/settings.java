@@ -26,6 +26,7 @@ import com.example.StudyBuddy.LoginSystem.Logout;
 public class settings extends AppCompatActivity {
     private Button toDel;
     private Button logout;
+    private Button friends;
 
     private AlertDialog confirmDeletion;
     private AlertDialog.Builder builder;
@@ -39,7 +40,7 @@ public class settings extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
         toDel = (Button) findViewById(R.id.toDelete);
         logout = findViewById(R.id.logoutSETTINGS);
-
+        friends = findViewById(R.id.friendsSETTINGS);
 
         toDel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +55,14 @@ public class settings extends AppCompatActivity {
                 backToLogin();
             }
         });
+        friends.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toFriendsPage();
+            }
+        });
     }
+
 
     /**
      * Displays a pop-up dialog box to confirm with the user if they truly want to delete the account.
@@ -127,6 +135,14 @@ public class settings extends AppCompatActivity {
     public void backToLogin(){
         Intent intent = new Intent(this, LoginPage.class);
         startActivity(intent);
+    }
+
+    /**
+     * opens the friends page.
+     */
+    public void toFriendsPage(){
+        Intent toFriends = new Intent(this, Friends.class);
+        startActivity(toFriends);
     }
 }
 
