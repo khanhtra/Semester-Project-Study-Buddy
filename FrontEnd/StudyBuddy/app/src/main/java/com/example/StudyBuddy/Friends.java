@@ -10,7 +10,7 @@ import com.example.StudyBuddy.LocalData.LocalDataStorage;
 import com.example.StudyBuddy.LocalData.User;
 import com.google.android.material.snackbar.Snackbar;
 
-public class Friends extends AppCompatActivity {
+public class Friends extends AppCompatActivity implements addFriendsDialog.addFriendListener{
     private Button addFriends;
     private Button friendList;
 
@@ -32,7 +32,7 @@ public class Friends extends AppCompatActivity {
         addFriends.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                openDialog();
             }
         });
 
@@ -47,4 +47,13 @@ public class Friends extends AppCompatActivity {
     /**
      * Displays pop-up and allows user to add a friend through username
      */
+    public void openDialog(){
+        addFriendsDialog addNewFriend = new addFriendsDialog();
+        addNewFriend.show(getSupportFragmentManager(), "Add friend");
+    }
+
+    @Override
+    public void applyUsername(String name) {
+
+    }
 }
