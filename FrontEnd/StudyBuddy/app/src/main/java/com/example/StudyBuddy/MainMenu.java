@@ -41,6 +41,7 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
 private Button getPet;
 private Button timer;
 private Button settings;
+private Button checkPets;
 
 private WebSocketClient client;
 
@@ -63,6 +64,7 @@ private ArrayList<String> chat_entries = new ArrayList<>();
         getPet.setOnClickListener(this);
         timer.setOnClickListener(this);
         settings.setOnClickListener(this);
+        checkPets.setOnClickListener(this);
 
         LocalDataStorage data = new LocalDataStorage(this);
         User user = data.getUserData();
