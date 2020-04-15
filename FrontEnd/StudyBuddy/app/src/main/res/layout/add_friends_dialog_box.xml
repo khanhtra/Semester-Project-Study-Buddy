@@ -4,7 +4,7 @@
     android:padding="16dp">
 
     <EditText
-        android:hint="Insert Friend Username"
+        android:hint="Username is specific"
         android:id="@+id/edit_newFriend"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
