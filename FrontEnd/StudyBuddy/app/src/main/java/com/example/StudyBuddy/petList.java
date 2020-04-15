@@ -9,9 +9,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
+import android.widget.TextView;
 
 public class petList extends AppCompatActivity {
 
+    public String getURL() {
+        return URL;
+    }
+
+    public void setURL(String URL) {
+        this.URL = URL;
+    }
+
+    private String URL;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +30,10 @@ public class petList extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        URL = "http://coms-309-vb-5.cs.iastate.edu:8080/pettypes";
+
+        TextView textView1 = (TextView) findViewById(R.id.textView);
+        textView1.setText(getURL());
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,5 +43,10 @@ public class petList extends AppCompatActivity {
             }
         });
     }
+
+    //setContentView(R.layout.content_pet_list);
+
+    //textView1.setText(getURL());
+
 
 }
