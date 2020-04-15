@@ -11,7 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Friends"></activity>
+        <activity
+            android:name=".petList"
+            android:label="@string/title_activity_pet_list"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Friends" />
         <activity android:name=".getPets" />
         <activity android:name=".LoginSystem.RegisterPage" />
         <activity android:name=".Timer" />
