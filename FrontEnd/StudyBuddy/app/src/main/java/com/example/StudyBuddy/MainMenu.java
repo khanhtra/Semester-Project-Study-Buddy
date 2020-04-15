@@ -28,6 +28,8 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
 private Button getPet;
 private Button timer;
 private Button settings;
+private Button checkPets;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,10 +38,12 @@ private Button settings;
         getPet = findViewById(R.id.getPetMM);
         timer = findViewById(R.id.timerButtonMM);
         settings = findViewById(R.id.settingsMM);
+        checkPets = findViewById(R.id.checkPetsMM);
 
         getPet.setOnClickListener(this);
         timer.setOnClickListener(this);
         settings.setOnClickListener(this);
+        checkPets.setOnClickListener(this);
     }
 
 
@@ -59,6 +63,11 @@ private Button settings;
             case R.id.settingsMM:
                 Intent intent3 = new Intent(this, settings.class);
                 startActivity(intent3);
+                break;
+
+            case R.id.checkPetsMM:
+                Intent intent4 = new Intent(this, petList.class);
+                startActivity(intent4);
                 break;
         }
     }
