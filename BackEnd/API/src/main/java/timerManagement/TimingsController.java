@@ -36,7 +36,7 @@ public class TimingsController
 	{
 		try
 		{
-			SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss", Locale.ENGLISH);
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss", Locale.ENGLISH);
 			Date startTime = formatter.parse(sTime); 
 			
 			timingsService.addTiming(username, startTime, endTime);
