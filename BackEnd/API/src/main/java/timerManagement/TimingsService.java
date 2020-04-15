@@ -6,6 +6,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import UserManagement.User;
+import UserManagement.UserRepository;
 
 /**
  * The Timings service accesses and modifies the database using the repository
@@ -16,6 +17,9 @@ public class TimingsService {
 	@Autowired
 	TimingsRepository timingsRepository;
 
+	@Autowired
+	UserRepository userRepo;
+	
 	int id;
 
 	public TimingsService(){
@@ -52,7 +56,7 @@ public class TimingsService {
 			
 		}
 		
-		User user = timingsRepository.findById(id).get().getOwner();
+		User user = userRepo.findById(username).get();
 		timingsRepository.save(new Timings(id, startTime, endTime, user));
 	}
 }

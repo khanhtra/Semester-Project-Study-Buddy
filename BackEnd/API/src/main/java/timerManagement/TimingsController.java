@@ -1,7 +1,10 @@
 package timerManagement;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,11 +29,24 @@ public class TimingsController
 	 * @param username The users username
 	 * @param startTime The start of the interval
 	 * @param endTime The end of the interval
+	 * @throws ParseException 
 	 */
-	@RequestMapping(method=RequestMethod.POST, value = "/timings/{username}/add")
-	public void addTimings(@PathVariable String username, @RequestBody Date startTime, @RequestBody Date endTime)
+	@RequestMapping(method=RequestMethod.POST, value = "/timings/{username}/{sTime}")
+	public void addTimings(@PathVariable String username, @PathVariable String sTime, @RequestBody Date endTime) 
 	{
-		timingsService.addTiming(username, startTime, endTime);
+		try
+		{
+			SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss", Locale.ENGLISH);
+			Date startTime = formatter.parse(sTime); 
+			
+			timingsService.addTiming(username, startTime, endTime);
+		}
+		
+		catch(Exception e)
+		{
+			System.out.println("ERROR: " + sTime);
+			e.printStackTrace();
+		}	
 	}
 	
 	/**
@@ -43,5 +59,12 @@ public class TimingsController
 	public List<Timings> getTimings(@PathVariable String username)
 	{
 		return timingsService.getTimings(username);
+	}
+	
+	@RequestMapping("/timings/test")
+	public Date getTimings()
+	{
+		Date time = new Date();
+		return time;
 	}
 }
