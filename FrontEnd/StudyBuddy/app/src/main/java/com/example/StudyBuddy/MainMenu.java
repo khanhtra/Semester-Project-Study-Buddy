@@ -123,7 +123,7 @@ private ArrayList<String> chat_entries = new ArrayList<>();
                 break;
 
             case R.id.checkPetsMM:
-                Intent intent4 = new Intent(this, petList.class);
+                Intent intent4 = new Intent(this, PetList.class);
                 startActivity(intent4);
                 break;
         }
