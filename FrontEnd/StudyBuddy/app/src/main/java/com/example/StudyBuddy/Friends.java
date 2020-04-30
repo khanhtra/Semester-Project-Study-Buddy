@@ -44,12 +44,14 @@ public class Friends extends AppCompatActivity implements addFriendsDialog.addFr
                 openDialog();
 
                 String URL = "http://coms-309-vb-5.cs.iastate.edu:8080/users";
-
+                final String FriendURL = "coms-309-vb-5.cs.iastate.edu:8080/friends/";
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
                 JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, URL + "/" + friendUsername , null, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         //add friend to user
+                        RequestQueue friendQ = Volley.newRequestQueue(getApplicationContext());
+                        //JsonObjectRequest req = new JsonObjectRequest(Request.Method.POST, FriendURL )
                     }},
                         new Response.ErrorListener() {
                             @Override

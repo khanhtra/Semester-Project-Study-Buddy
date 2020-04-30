@@ -27,14 +27,15 @@ public class PetList extends AppCompatActivity {
     private LocalDataStorage data;
     private User user;
 
-    String username = user.getId();
-
     ArrayList<HashMap<String, String>> contactList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_petlist);
+
+        data = new LocalDataStorage(getApplicationContext());
+        user = data.getUserData();
 
         contactList = new ArrayList<>();
         lv = (ListView) findViewById(R.id.list);
@@ -54,7 +55,7 @@ public class PetList extends AppCompatActivity {
         protected Void doInBackground(Void... arg0) {
             HttpHandler sh = new HttpHandler();
             // Making a request to url and getting response
-            String url = "http://coms-309-vb-5.cs.iastate.edu:8080/users/"+username+"/pets";
+            String url = "http://coms-309-vb-5.cs.iastate.edu:8080/users/"+user.getId()+"/pets";
             String jsonStr = sh.makeServiceCall(url);
             System.out.println(jsonStr);
 
