@@ -35,6 +35,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
+import adminActivities.TypeSubmission;
+
 /**
  * Implements the main page of the app.
  * Has the buttons getPet, timer and settings.
@@ -44,6 +46,7 @@ private Button getPet;
 private Button timer;
 private Button settings;
 private Button checkPets;
+private Button admin;
 
 private WebSocketClient client;
 
@@ -62,12 +65,15 @@ private ArrayList<String> chat_entries = new ArrayList<>();
         timer = findViewById(R.id.timerButtonMM);
         settings = findViewById(R.id.settingsMM);
         checkPets = findViewById(R.id.checkPetsMM);
+        admin = findViewById(R.id.adminButton);
 
+        admin.setOnClickListener(this);
         getPet.setOnClickListener(this);
         timer.setOnClickListener(this);
         settings.setOnClickListener(this);
         checkPets.setOnClickListener(this);
 
+        enableAdminButton();
 
         final Handler h = new Handler();
         final int delay = 3000; //milliseconds
@@ -139,6 +145,11 @@ private ArrayList<String> chat_entries = new ArrayList<>();
                 Intent intent4 = new Intent(this, PetList.class);
                 startActivity(intent4);
                 break;
+
+            case R.id.adminButton:
+                Intent intent5 = new Intent(this, TypeSubmission.class);
+                startActivity(intent5);
+                break;
         }
     }
 
@@ -180,6 +191,21 @@ private ArrayList<String> chat_entries = new ArrayList<>();
         });
 
         rq.add(request);
+    }
+
+    private void enableAdminButton()
+    {
+        if(authenticateAdmin())
+        {
+            admin.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private boolean authenticateAdmin()
+    {
+        LocalDataStorage data = new LocalDataStorage(this);
+        User user = data.getUserData();
+        return (user.getId().equals("varun"));
     }
 }
 

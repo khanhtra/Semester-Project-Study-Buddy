@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".friendList"></activity>
+        <activity android:name="adminActivities.TypeSubmission"></activity>
+        <activity android:name=".friendList" />
         <activity android:name=".PetList" />
         <activity android:name=".Friends" />
         <activity android:name=".getPets" />
