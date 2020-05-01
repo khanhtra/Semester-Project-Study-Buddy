@@ -56,9 +56,9 @@ public class PetController
 	 * @param user   The pet owner
 	 */
 	@RequestMapping(method=RequestMethod.POST, value = "/users/pets/{rarity}")
-	public void addPet(@PathVariable String rarity, @RequestBody User user)
+	public String addPet(@PathVariable String rarity, @RequestBody User user)
 	{
-		petService.addPet(rarity, user);
+		return petService.addPet(rarity, user);
 	}
 	
 	/**

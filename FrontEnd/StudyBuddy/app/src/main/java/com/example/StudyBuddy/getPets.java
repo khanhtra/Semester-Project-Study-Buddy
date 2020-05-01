@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -97,7 +99,10 @@ public class getPets extends AppCompatActivity {
 
         StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
-            public void onResponse(String response) { Toast.makeText(getPets.this, "Got a " + rarity + " pet!", Toast.LENGTH_SHORT).show(); }
+            public void onResponse(String response)
+            {
+                nameAlert("Border Collie", rarity);
+            }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) { error.printStackTrace(); }
@@ -174,6 +179,52 @@ public class getPets extends AppCompatActivity {
                 String tdText = "Tickets: ";
                 TextView ticketDisplay = findViewById(R.id.gpTicketsDisplay);
                 ticketDisplay.setText(tdText + Integer.parseInt(response));
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error)
+            {
+                error.printStackTrace();
+            }
+        });
+
+        rq.add(request);
+    }
+
+    public void nameAlert(final String response, String rarity)
+    {
+        final String[] responses = response.split("_");
+
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        alert.setTitle("Congratulations");
+        alert.setMessage("You have received a " + rarity.toLowerCase() + " " + responses[0] + "! Choose a new for your new pet.");
+
+        // Set an EditText view to get user input
+        final EditText input = new EditText(this);
+        alert.setView(input);
+
+        alert.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                renamePet(input.getText().toString(), responses[1]);
+            }
+        });
+
+        alert.show();
+    }
+
+    public void renamePet(String name, String id)
+    {
+        String getURL = "http://coms-309-vb-5.cs.iastate.edu:8080/users/pets/rename/" + id + "/" + name;
+        RequestQueue rq = Volley.newRequestQueue(getApplicationContext());
+
+        final int[] tickets = new int[1];
+        StringRequest request = new StringRequest(Request.Method.POST, getURL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response)
+            {
+
             }
         }, new Response.ErrorListener() {
             @Override

@@ -43,7 +43,7 @@ public class PetService
 	 * @param rarity The pet rarity
 	 * @param user   The user to whom the pet is to be added
 	 */
-	public void addPet(String rarity, User user) 
+	public String addPet(String rarity, User user) 
 	{
 		try 
 		{
@@ -57,6 +57,7 @@ public class PetService
 		
 		PetType petType = petTypeRepository.getRandomType();
 		petRepository.save(new Pet(id, "Leo", petType, user));
+		return petType.getSubType() + "_" + id;
 	}
 	
 	/**
