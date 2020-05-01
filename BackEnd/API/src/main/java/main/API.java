@@ -15,10 +15,12 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@ComponentScan(basePackages = { "PetsManagement", "UserManagement", "timerManagement", "friendManagement",
-		"websocket" })
-@EntityScan(basePackages = { "PetsManagement", "UserManagement", "timerManagement", "friendManagement" })
-@EnableJpaRepositories(basePackages = { "PetsManagement", "UserManagement", "timerManagement", "friendManagement" })
+@ComponentScan(basePackages = { "petTypeManagement", "petManagement", "userManagement", "timerManagement",
+		"friendManagement", "websocket" })
+@EntityScan(basePackages = { "petTypeManagement", "petManagement", "userManagement", "timerManagement",
+		"friendManagement" })
+@EnableJpaRepositories(basePackages = { "petTypeManagement", "petManagement", "userManagement", "timerManagement",
+		"friendManagement" })
 @SpringBootApplication
 @EnableSwagger2
 public class API {
