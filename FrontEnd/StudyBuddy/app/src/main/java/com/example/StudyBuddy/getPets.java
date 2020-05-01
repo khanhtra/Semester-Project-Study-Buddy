@@ -71,9 +71,9 @@ public class getPets extends AppCompatActivity {
         Random rand = new Random();
         int percentage = rand.nextInt(100);
 
-        if(percentage < 80){rarity = "Ultra Rare"; }
+        if(percentage < 80){rarity = "Common"; }
         else if (percentage < 99){rarity = "Rare";}
-        else{rarity = "Common"; }
+        else{rarity = "Ultra Rare"; }
 
     }
 

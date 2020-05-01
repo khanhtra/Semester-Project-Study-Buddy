@@ -2,6 +2,7 @@ package com.example.StudyBuddy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -45,19 +46,12 @@ public class Friends extends AppCompatActivity implements addFriendsDialog.addFr
 
         addFriends.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(final View v) {
-                openDialog();
-
-
-            }
+            public void onClick(final View v) { openDialog(); }
         });
 
         friendList.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                //TODO
-                //view friends in list
-            }
+            public void onClick(View v) { openFriendList(); }
         });
     }
 
@@ -69,6 +63,13 @@ public class Friends extends AppCompatActivity implements addFriendsDialog.addFr
         addNewFriend.show(getSupportFragmentManager(), "Add friend");
     }
 
+    /**
+     * opens the friendList activity
+     */
+    public void openFriendList(){
+        Intent intent = new Intent(this, friendList.class);
+        startActivity(intent);
+    }
 
     /**
      * sets friendUsername to the name given
