@@ -235,5 +235,6 @@ public class getPets extends AppCompatActivity {
         });
 
         rq.add(request);
+        finish();
     }
 }
