@@ -47,7 +47,7 @@ public class friendList extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            Toast.makeText(friendList.this,"Json Data is downloading",Toast.LENGTH_LONG).show();
+            Toast.makeText(friendList.this,"Json Data is downloading",Toast.LENGTH_SHORT).show();
 
         }
 
@@ -55,38 +55,27 @@ public class friendList extends AppCompatActivity {
         protected Void doInBackground(Void... arg0) {
             HttpHandler sh = new HttpHandler();
             // Making a request to url and getting response
-            //TODO
-            String url = "--";
+            String url = "http://coms-309-vb-5.cs.iastate.edu:8080/friends/" + user.getId();
+
             String jsonStr = sh.makeServiceCall(url);
             System.out.println(jsonStr);
 
             Log.e(TAG, "Response from url: " + jsonStr);
             if (jsonStr != null) {
                 try {
-                    //JSONObject jsonObj = new JSONObject(jsonStr);
 
                     // Getting JSON Array node
                     JSONArray contacts = new JSONArray(jsonStr);
 
                     // looping through All Contacts
                     for (int i = 0; i < contacts.length(); i++) {
-                        JSONObject c = contacts.getJSONObject(i);
-
-                        JSONObject tp = c.getJSONObject("type");
-                        String name = c.getString("name");
-                        String id = tp.getString("id");
-                        String subtype = tp.getString("subType");
-                        String rarity = tp.getString("rarity");
-
+                        String name = contacts.get(i).toString();
 
                         // tmp hash map for single contact
                         HashMap<String, String> contact = new HashMap<>();
 
                         // adding each child node to HashMap key => value
                         contact.put("name", name);
-                        contact.put("type", id);
-                        contact.put("subtype", subtype);
-                        contact.put("rarity", rarity);
 
                         // adding contact to contact list
                         contactList.add(contact);
