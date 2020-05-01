@@ -85,9 +85,7 @@ public class friendList extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getApplicationContext(),
-                                    "Json parsing error: " + e.getMessage(),
-                                    Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Json parsing error: " + e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     });
 
@@ -113,7 +111,7 @@ public class friendList extends AppCompatActivity {
             super.onPostExecute(result);
             ListAdapter adapter = new SimpleAdapter(friendList.this, contactList,
                     R.layout.list_frienditem, new String[]{ "name"},
-                    new int[]{R.id.email, R.id.mobile});
+                    new int[]{R.id.friendName});
             lv.setAdapter(adapter);
         }
     }
