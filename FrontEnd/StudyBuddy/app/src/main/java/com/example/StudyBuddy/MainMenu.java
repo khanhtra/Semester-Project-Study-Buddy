@@ -132,7 +132,7 @@ private ArrayList<String> chat_entries = new ArrayList<>();
                 break;
 
             case R.id.timerButtonMM:
-                Intent intent2 = new Intent(this, Timer.class);
+                Intent intent2 = new Intent(this, TimerV2.class);
                 startActivity(intent2);
                 break;
 
