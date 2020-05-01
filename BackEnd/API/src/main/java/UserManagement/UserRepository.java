@@ -1,13 +1,13 @@
-package UserManagement;
+package userManagement;
 
 import org.springframework.data.repository.CrudRepository;
 
 /**
- * The User repository contains inherited methods from the CrudRepsoitory for database access
+ * The User repository contains inherited methods from the CrudRepsoitory for
+ * database access
  * 
  * @author Varun
  */
-public interface UserRepository extends CrudRepository<User, String>
-{
+public interface UserRepository extends CrudRepository<User, String> {
 
 }

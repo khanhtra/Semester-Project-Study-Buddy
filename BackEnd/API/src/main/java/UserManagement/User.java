@@ -1,4 +1,4 @@
-package UserManagement;
+package userManagement;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,37 +11,34 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "users")
-public class User 
-{
+public class User {
 	@Id
 	private String username;
 	private String salt;
 	private int password;
 	private int tickets;
 	private int usedTickets;
-	
+
 	/**
 	 * Constructor for easy construction of a User object with default values
 	 */
-	public User() 
-	{
-		
+	public User() {
+
 	}
-	
+
 	/**
 	 * Constructor for construction of a User object with given values
 	 * 
 	 * @param username The User's username
-	 * @param salt	   The salt String
+	 * @param salt     The salt String
 	 * @param password The hashed password
 	 */
-	public User(String username, String salt, int password) 
-	{
+	public User(String username, String salt, int password) {
 		this.username = username;
 		this.salt = salt;
 		this.password = password;
 	}
-	
+
 	/**
 	 * Constructor for construction of a User object with existing tickets
 	 * 
@@ -51,66 +48,59 @@ public class User
 	 * @param tickets     The number of tickets the user has
 	 * @param usedTickets The number of tickets the User has used
 	 */
-	public User(String username, String salt, int password, int tickets, int usedTickets)
-	{
+	public User(String username, String salt, int password, int tickets, int usedTickets) {
 		this.username = username;
 		this.salt = salt;
 		this.password = password;
 		this.tickets = tickets;
 		this.usedTickets = usedTickets;
 	}
-	
+
 	/**
 	 * 
 	 * @return the User's username
 	 */
-	public String getId() 
-	{
+	public String getId() {
 		return username;
 	}
-	
+
 	/**
 	 * 
 	 * @param username The User's username
 	 */
-	public void setId(String username)
-	{
+	public void setId(String username) {
 		this.username = username;
 	}
-	
+
 	/**
 	 * 
 	 * @return The salt String
 	 */
-	public String getSalt()
-	{
+	public String getSalt() {
 		return salt;
 	}
-	
+
 	/**
 	 * 
 	 * @param salt The salt String
 	 */
-	public void setSalt(String salt)
-	{
+	public void setSalt(String salt) {
 		this.salt = salt;
 	}
-	
+
 	/**
 	 * 
 	 * @return The hashed password
 	 */
-	public int getPassword()
-	{
+	public int getPassword() {
 		return password;
 	}
-	
+
 	/**
 	 * 
 	 * @param password The hashed password
 	 */
-	public void setPassword(int password)
-	{
+	public void setPassword(int password) {
 		this.password = password;
 	}
 
@@ -118,8 +108,7 @@ public class User
 	 * 
 	 * @return The number of tickets the User has
 	 */
-	public int getTickets() 
-	{
+	public int getTickets() {
 		return tickets;
 	}
 
@@ -127,8 +116,7 @@ public class User
 	 * 
 	 * @param tickets The number of tickets the User has
 	 */
-	public void setTickets(int tickets) 
-	{
+	public void setTickets(int tickets) {
 		this.tickets = tickets;
 	}
 
@@ -136,8 +124,7 @@ public class User
 	 * 
 	 * @return The number of tickets the User has used
 	 */
-	public int getUsedTickets() 
-	{
+	public int getUsedTickets() {
 		return usedTickets;
 	}
 
@@ -145,8 +132,7 @@ public class User
 	 * 
 	 * @param usedtickets The number of tickets the User has used
 	 */
-	public void setUsedtickets(int usedtickets) 
-	{
+	public void setUsedtickets(int usedtickets) {
 		this.usedTickets = usedtickets;
 	}
 
@@ -154,16 +140,14 @@ public class User
 	 * 
 	 * @param tickets The number of tickets to be added to the User
 	 */
-	public void addTickets(int tickets) 
-	{
-		this.tickets += tickets; 	
+	public void addTickets(int tickets) {
+		this.tickets += tickets;
 	}
 
 	/**
 	 * Removes a single ticket from the User
 	 */
-	public void removeTicket() 
-	{
+	public void removeTicket() {
 		--tickets;
 		++usedTickets;
 	}

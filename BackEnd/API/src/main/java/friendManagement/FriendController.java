@@ -10,26 +10,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class FriendController 
-{
+public class FriendController {
 	@Autowired
-	FriendService friendService;
-	
+	private FriendService friendService;
+
 	@RequestMapping("/friends/{username}")
-	public List<String> getFriends(@PathVariable String username)
-	{
+	public List<String> getFriends(@PathVariable String username) {
 		return friendService.getFriends(username);
 	}
-	
-	@RequestMapping(method=RequestMethod.POST, value = "/friends/{username}")
-	public void addFriend(@PathVariable String username, @RequestBody String username2)
-	{
+
+	@RequestMapping(method = RequestMethod.POST, value = "/friends/{username}")
+	public void addFriend(@PathVariable String username, @RequestBody String username2) {
 		friendService.addFriend(username, username2);
 	}
-	
-	@RequestMapping(method=RequestMethod.DELETE, value = "/friends/{username}")
-	public void deleteFriend(@PathVariable String username, @RequestBody String username2)
-	{
+
+	@RequestMapping(method = RequestMethod.DELETE, value = "/friends/{username}")
+	public void deleteFriend(@PathVariable String username, @RequestBody String username2) {
 		friendService.deleteFriend(username, username2);
 	}
 }

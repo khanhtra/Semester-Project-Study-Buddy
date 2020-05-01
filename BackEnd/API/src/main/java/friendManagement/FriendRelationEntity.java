@@ -4,60 +4,51 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class FriendRelationEntity 
-{
+public class FriendRelationEntity {
 	@Id
 	private int id;
-	
+
 	private String usernameo;
 	private String usernamet;
-	
-	public FriendRelationEntity() 
-	{
-		
+
+	public FriendRelationEntity() {
+
 	}
-	
-	public FriendRelationEntity(int id, String u1, String u2) 
-	{
+
+	public FriendRelationEntity(int id, String u1, String u2) {
 		super();
 		this.id = id;
 		usernameo = u1;
 		usernamet = u2;
 	}
-	
-	public int getId() 
-	{
+
+	public int getId() {
 		return id;
 	}
 
-	public void setId(int id) 
-	{
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getUsernameo() 
-	{
+	public String getUsernameo() {
 		return usernameo;
 	}
 
-	public void setUsernameo(String usernameo) 
-	{
+	public void setUsernameo(String usernameo) {
 		this.usernameo = usernameo;
 	}
 
-	public String getUsernamet() 
-	{
+	public String getUsernamet() {
 		return usernamet;
 	}
 
-	public void setUsernamet(String usernamet) 
-	{
+	public void setUsernamet(String usernamet) {
 		this.usernamet = usernamet;
 	}
-	
+
 	@Override
-	public boolean equals (Object o)
-	{
-		return ((usernameo.equals(((FriendRelationEntity)o).usernameo)) && (usernamet.equals(((FriendRelationEntity)o).usernamet)));	
+	public boolean equals(Object o) {
+		return ((usernameo.equals(((FriendRelationEntity) o).usernameo))
+				&& (usernamet.equals(((FriendRelationEntity) o).usernamet)));
 	}
 }

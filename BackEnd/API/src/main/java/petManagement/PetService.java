@@ -1,4 +1,4 @@
-package PetsManagement;
+package petManagement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import UserManagement.User;
+import userManagement.User;
+import petTypeManagement.PetType;
+import petTypeManagement.PetTypeRepository;
 
 /**
  * The Pet service accesses and modifies the database using the repository
@@ -14,24 +16,22 @@ import UserManagement.User;
  * @author Varun
  */
 @Service
-public class PetService 
-{
+public class PetService {
 	int id;
-	
+
 	@Autowired
 	PetRepository petRepository;
-	
+
 	@Autowired
 	PetTypeRepository petTypeRepository;
-	
+
 	/**
 	 * Gets all Pets for a User
 	 * 
 	 * @param username The User's username
 	 * @return A List of all the User's Pets
 	 */
-	public List<Pet> getPets(String username) 
-	{
+	public List<Pet> getPets(String username) {
 		List<Pet> pets = new ArrayList<>();
 		petRepository.findByOwnerUsername(username).forEach(pets::add);
 		return pets;
@@ -43,30 +43,26 @@ public class PetService
 	 * @param rarity The pet rarity
 	 * @param user   The user to whom the pet is to be added
 	 */
-	public String addPet(String rarity, User user) 
-	{
-		try 
-		{
+	public String addPet(String rarity, User user) {
+		try {
 			id = petRepository.findFirstByOrderByIdDesc().getId() + 1;
 		}
-		
-		catch(NullPointerException e)
-		{
-			
+
+		catch (NullPointerException e) {
+
 		}
-		
+
 		PetType petType = petTypeRepository.getRandomType();
-		petRepository.save(new Pet(id, "Leo", petType, user));
+		petRepository.save(new Pet(id, "Moe", petType, user));
 		return petType.getSubType() + "_" + id;
 	}
-	
+
 	/**
 	 * Deletes a Pet from a User
 	 * 
 	 * @param id The id of the Pet to be deleted
 	 */
-	public void deletePet(int id) 
-	{
+	public void deletePet(int id) {
 		petRepository.deleteById(id);
 	}
 
@@ -76,10 +72,9 @@ public class PetService
 	 * @param id   The Pet id
 	 * @param name The new name for the Pet
 	 */
-	public void renamePet(int id, String name) 
-	{
+	public void renamePet(int id, String name) {
 		PetType type = petRepository.findById(id).get().getType();
 		User owner = petRepository.findById(id).get().getOwner();
-		petRepository.save(new Pet(id, name, type, owner));	
+		petRepository.save(new Pet(id, name, type, owner));
 	}
 }
