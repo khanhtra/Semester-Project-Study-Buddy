@@ -7,9 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -65,6 +67,17 @@ private ArrayList<String> chat_entries = new ArrayList<>();
         timer.setOnClickListener(this);
         settings.setOnClickListener(this);
         checkPets.setOnClickListener(this);
+
+
+        final Handler h = new Handler();
+        final int delay = 3000; //milliseconds
+
+        h.postDelayed(new Runnable(){
+            public void run(){
+                updateTicketCount();
+                h.postDelayed(this, delay);
+            }
+        }, delay);
 
         LocalDataStorage data = new LocalDataStorage(this);
         User user = data.getUserData();
@@ -141,5 +154,32 @@ private ArrayList<String> chat_entries = new ArrayList<>();
         adapter.addItem(item);
     }
 
+    public void updateTicketCount()
+    {
+        LocalDataStorage data = new LocalDataStorage(this);
+        User user = data.getUserData();
+
+        String getURL = "http://coms-309-vb-5.cs.iastate.edu:8080/users/".concat(user.getId()).concat("/tickets");
+        RequestQueue rq = Volley.newRequestQueue(getApplicationContext());
+
+        final int[] tickets = new int[1];
+        StringRequest request = new StringRequest(Request.Method.GET, getURL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response)
+            {
+                String tdText = "Tickets: ";
+                TextView ticketDisplay = findViewById(R.id.ticketsDisplay);
+                ticketDisplay.setText(tdText + Integer.parseInt(response));
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error)
+            {
+                error.printStackTrace();
+            }
+        });
+
+        rq.add(request);
+    }
 }
 
