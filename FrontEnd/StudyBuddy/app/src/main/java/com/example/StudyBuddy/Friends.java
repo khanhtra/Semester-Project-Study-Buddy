@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -47,22 +48,7 @@ public class Friends extends AppCompatActivity implements addFriendsDialog.addFr
             public void onClick(final View v) {
                 openDialog();
 
-                String URL = "http://coms-309-vb-5.cs.iastate.edu:8080/users";
-                RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, URL + "/" + friendUsername , null,new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        addNewFriend();
-                    }},
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                Snackbar noUser = Snackbar.make(v, "This user does not exist. Failed to add.", Snackbar.LENGTH_LONG);
-                                noUser.show();
-                            }
-                        });
 
-                queue.add(request);
             }
         });
 
@@ -89,7 +75,25 @@ public class Friends extends AppCompatActivity implements addFriendsDialog.addFr
      * @param name
      */
     @Override
-    public void applyUsername(String name) {friendUsername = name;}
+    public void applyUsername(String name) {
+        friendUsername = name;
+
+        String URL = "http://coms-309-vb-5.cs.iastate.edu:8080/users";
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, URL + "/" + friendUsername , null,new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                addNewFriend();
+            }},
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), "No such user!", Toast.LENGTH_LONG).show();
+                    }
+                });
+
+        queue.add(request);
+    }
 
     /**
      * Makes a POST request to add a new friend to this user
@@ -97,5 +101,35 @@ public class Friends extends AppCompatActivity implements addFriendsDialog.addFr
     public void addNewFriend(){
         String URL = "http://coms-309-vb-5.cs.iastate.edu:8080/friends/";
         URL = URL.concat(user.getId());
+
+        RequestQueue rq = Volley.newRequestQueue(getApplicationContext());
+
+        StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getApplicationContext(), friendUsername + " added as friend!", Toast.LENGTH_LONG).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error)
+            {
+                error.printStackTrace();
+            }
+        }) {
+            @Override
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+
+            @Override
+            public byte[] getBody() {
+                Gson gson = new Gson();
+                String json = gson.toJson(friendUsername);
+
+                try{ return (json).getBytes("utf-8"); }
+                catch (UnsupportedEncodingException e) { return null; }
+            }
+        };
+        rq.add(request);
     }
 }
