@@ -85,7 +85,7 @@ public class getPets extends AppCompatActivity {
 
         StringRequest request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
-            public void onResponse(String response) { Toast.makeText(getPets.this, "Got a pet!", Toast.LENGTH_SHORT).show(); }
+            public void onResponse(String response) { Toast.makeText(getPets.this, "Got a " + rarity + " pet!", Toast.LENGTH_SHORT).show(); }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) { error.printStackTrace(); }

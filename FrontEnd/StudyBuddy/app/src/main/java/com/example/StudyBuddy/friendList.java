@@ -38,7 +38,7 @@ public class friendList extends AppCompatActivity {
         user = data.getUserData();
 
         contactList = new ArrayList<>();
-        lv = (ListView) findViewById(R.id.list);
+        lv = (ListView) findViewById(R.id.list2);
 
         new friendList.GetList().execute();
     }
