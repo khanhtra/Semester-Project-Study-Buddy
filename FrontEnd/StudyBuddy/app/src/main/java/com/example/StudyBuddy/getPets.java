@@ -101,7 +101,7 @@ public class getPets extends AppCompatActivity {
             @Override
             public void onResponse(String response)
             {
-                nameAlert("Border Collie", rarity);
+                nameAlert(response, rarity);
             }
         }, new Response.ErrorListener() {
             @Override
